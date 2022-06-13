@@ -212,31 +212,10 @@ function showLeftMenuByQx(){
 						</a>
 					</li>
 					<div class="line_div"></div>
-					<li class="layui-nav-item drk_item_li">
-						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>ddgl/dsh/list">
-							&nbsp;&nbsp;&nbsp;待审核
-						</a>
-					</li>
-					<div class="line_div"></div>
-					<li class="layui-nav-item drk_item_li">
-						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>ddgl/drk/list">
-							&nbsp;&nbsp;&nbsp;待入库
-						</a>
-					</li>
-					<div class="line_div"></div>
 					<li class="layui-nav-item zhcx_item_li">
 						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
 						<a href="<%=basePath%>ddgl/zhcx/list">
 							&nbsp;&nbsp;&nbsp;综合查询
-						</a>
-					</li>
-					<div class="line_div"></div>
-					<li class="layui-nav-item shjl_item_li">
-						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>ddgl/shjl/list">
-							&nbsp;&nbsp;&nbsp;审核记录
 						</a>
 					</li>
 				</div>
@@ -258,20 +237,6 @@ function showLeftMenuByQx(){
 						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
 						<a href="<%=basePath%>gbgl/gbjl/list">
 							&nbsp;&nbsp;&nbsp;过磅记录
-						</a>
-					</li>
-					<div class="line_div"></div>
-					<li class="layui-nav-item dyjsh_item_li">
-						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>gbgl/yjdsh/list">
-							&nbsp;&nbsp;&nbsp;一检待审核
-						</a>
-					</li>
-					<div class="line_div"></div>
-					<li class="layui-nav-item dejsh_item_li">
-						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>gbgl/ejdsh/list">
-							&nbsp;&nbsp;&nbsp;二检待审核
 						</a>
 					</li>
 				</div>
@@ -321,20 +286,6 @@ function showLeftMenuByQx(){
 						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
 						<a href="<%=basePath%>dwgl/shbm/list">
 							&nbsp;&nbsp;&nbsp;收货部门
-						</a>
-					</li>
-				</div>
-				<div class="first-level-div">
-					<li class="layui-nav-item first-level">
-						<a>
-							车辆台账管理
-						</a>
-					</li>
-					<div class="line_div"></div>
-					<li class="layui-nav-item">
-						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
-						<a href="<%=basePath%>cltzgl/zhcx/list">
-							&nbsp;&nbsp;&nbsp;综合查询
 						</a>
 					</li>
 				</div>
