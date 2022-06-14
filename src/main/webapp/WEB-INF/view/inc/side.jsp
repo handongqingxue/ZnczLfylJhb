@@ -219,6 +219,41 @@ function showLeftMenuByQx(){
 						</a>
 					</li>
 				</div>
+				<div class="first-level-div clgl_first_div">
+					<li class="layui-nav-item first-level">
+						<a>
+							车辆管理
+						</a>
+					</li>
+					<div class="line_div"></div>
+					<li class="layui-nav-item mscl_item_li">
+						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
+						<a href="<%=basePath%>clgl/mscl/list">
+							&nbsp;&nbsp;&nbsp;陌生车辆
+						</a>
+					</li>
+					<div class="line_div"></div>
+					<li class="layui-nav-item dsbcl_item_li">
+						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
+						<a href="<%=basePath%>clgl/dsbcl/list">
+							&nbsp;&nbsp;&nbsp;待识别车辆
+						</a>
+					</li>
+					<div class="line_div"></div>
+					<li class="layui-nav-item ysbcl_item_li">
+						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
+						<a href="<%=basePath%>clgl/ysbcl/list">
+							&nbsp;&nbsp;&nbsp;已识别车辆
+						</a>
+					</li>
+					<div class="line_div"></div>
+					<li class="layui-nav-item zhcx_item_li">
+						<img class="pointer-img" alt="" src="<%=basePath%>resource/image/ico_3.gif" />
+						<a href="<%=basePath%>clgl/zhcx/list">
+							&nbsp;&nbsp;&nbsp;综合查询
+						</a>
+					</li>
+				</div>
 				<div class="first-level-div gbgl_first_div">
 					<li class="layui-nav-item first-level">
 						<a>

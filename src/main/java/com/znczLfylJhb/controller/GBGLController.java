@@ -169,42 +169,6 @@ public class GBGLController {
 		return MODULE_NAME+"/gbjl/detail";
 	}
 	
-	/**
-	 * 跳转到过磅管理-一检待审核-列表页面
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value="/yjdsh/list")
-	public String goYjdshList(HttpServletRequest request) {
-		
-		//publicService.selectNav(request);
-		
-		request.setAttribute("yjdshDdztMc", DingDanZhuangTai.YI_JIAN_DAI_SHEN_HE_TEXT);
-		request.setAttribute("drkDdztMc", DingDanZhuangTai.DAI_RU_KU_TEXT);
-		//request.setAttribute("shlx", ShenHeJiLu.YI_JIAN_SHEN_HE);
-		request.setAttribute("gblx", GuoBangJiLu.RU_CHANG_GUO_BANG);
-		
-		return MODULE_NAME+"/yjdsh/list";
-	}
-	
-	/**
-	 * 跳转到过磅管理-二检待审核-列表页面
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value="/ejdsh/list")
-	public String goEjdshList(HttpServletRequest request) {
-		
-		//publicService.selectNav(request);
-		
-		request.setAttribute("ejdshDdztMc", DingDanZhuangTai.ER_JIAN_DAI_SHEN_HE_TEXT);
-		request.setAttribute("ywcDdztMc", DingDanZhuangTai.YI_WAN_CHENG_TEXT);
-		//request.setAttribute("shlx", ShenHeJiLu.ER_JIAN_SHEN_HE);
-		request.setAttribute("gblx", GuoBangJiLu.CHU_CHANG_GUO_BANG);
-		
-		return MODULE_NAME+"/ejdsh/list";
-	}
-
 	@RequestMapping(value="/newBangDanJiLu")
 	@ResponseBody
 	public Map<String, Object> newBangDanJiLu(BangDanJiLu bdjl) {
@@ -307,19 +271,4 @@ public class GBGLController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/queryDJYList")
-	@ResponseBody
-	public Map<String, Object> queryDJYList(String ddh,String ddztMc,String sjxm,String sjsfzh,String cph,String yssMc,String fhdwMc,
-			String shbmMc,String gbsjks,String gbsjjs,Integer gblx,int page,int rows,String sort,String order) {
-		
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		
-		int count = guoBangJiLuService.queryDJYForInt(ddh,ddztMc,sjxm,sjsfzh,cph,yssMc,fhdwMc,shbmMc,gbsjks,gbsjjs,gblx);
-		List<GuoBangJiLu> jyjlList=guoBangJiLuService.queryDJYList(ddh, ddztMc, sjxm, sjsfzh, cph, yssMc, fhdwMc, shbmMc, gbsjks, gbsjjs, gblx, page, rows, sort, order);
-		
-		jsonMap.put("total", count);
-		jsonMap.put("rows", jyjlList);
-		
-		return jsonMap;
-	}
 }

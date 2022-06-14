@@ -49,7 +49,7 @@ public class DingDanServiceImpl implements DingDanService {
 	@Override
 	public int add(DingDan dd) {
 		// TODO Auto-generated method stub
-		int ddztId=dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.DAI_SHEN_HE_TEXT);
+		int ddztId=dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.YI_JIAN_PAI_DUI_ZHONG_TEXT);
 		dd.setDdztId(ddztId);
 		return dingDanDao.add(dd);
 	}
