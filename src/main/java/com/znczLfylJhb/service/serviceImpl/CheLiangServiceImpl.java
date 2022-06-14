@@ -33,7 +33,7 @@ public class CheLiangServiceImpl implements CheLiangService {
 		int count=cheLiangDao.updateWcddcsByCph(cph);
 		int wcddcs=cheLiangDao.getWcddcsByCphLx(cph,CheLiang.MO_SHENG_CHE_LIANG);
 		if(wcddcs>=CheLiang.DSBCLBZZ) {
-			
+			cheLiangDao.updateLxByCph(CheLiang.DAI_SHI_BIE_CHE_LIANG,cph);
 		}
 		return count;
 	}

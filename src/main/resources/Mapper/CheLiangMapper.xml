@@ -19,4 +19,7 @@
 	<update id="updateWcddcsByCph">
 		update che_liang set wcddcs=wcddcs+1 where cph=#{cph}
 	</update>
+	<select id="getWcddcsByCphLx" resultType="java.lang.Integer">
+		select wcddcs from che_liang where cph=#{cph} and lx=${@com.znczLfylJhb.entity.CheLiang@MO_SHENG_CHE_LIANG}
+	</select>
 </mapper>
