@@ -53,7 +53,6 @@ var pbdxxdNum=0;
 var appendStr="";
 $(function(){
 	initSearchLB();
-	initAddLB();
 	initTab1();
 	initPreviewBDXXDialog();//0
 	
@@ -192,15 +191,6 @@ function initSearchLB(){
 	});
 }
 
-function initAddLB(){
-	$("#add_but").linkbutton({
-		iconCls:"icon-add",
-		onClick:function(){
-			location.href=gbglPath+"bdjl/new";
-		}
-	});
-}
-
 function initTab1(){
 	tab1=$("#tab1").datagrid({
 		title:"磅单记录查询",
@@ -301,7 +291,6 @@ function setFitWidthInParent(parent,self){
 			<span class="ddh_span">订单号：</span>
 			<input type="text" class="ddh_inp" id="ddh" placeholder="请输入订单号"/>
 			<a class="search_but" id="search_but">查询</a>
-			<a id="add_but">添加</a>
 		</div>
 		<table id="tab1">
 		</table>

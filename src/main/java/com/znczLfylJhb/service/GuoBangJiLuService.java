@@ -16,11 +16,6 @@ public interface GuoBangJiLuService {
 
 	GuoBangJiLu selectById(String id);
 
-	int queryDJYForInt(String ddh, String ddztMc, String sjxm, String sjsfzh, String cph, String yssMc, String fhdwMc, String shbmMc, String gbsjks, String gbsjjs, Integer gblx);
-
-	List<GuoBangJiLu> queryDJYList(String ddh, String ddztMc, String sjxm, String sjsfzh, String cph, String yssMc, String fhdwMc, String shbmMc, String gbsjks, String gbsjjs, Integer gblx, int page, int rows,
-			String sort, String order);
-
 	GuoBangJiLu selectPrintInfo(Integer ddId, Integer gblx);
 
 	boolean checkIfExistByDdId(Integer gblx, Integer ddId);

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczLfylJhb.util.*;
+import com.znczLfyl.entity.YongHu;
+import com.znczLfyl.util.JsonUtil;
+import com.znczLfyl.util.PlanResult;
 import com.znczLfylJhb.entity.*;
 
 import com.znczLfylJhb.service.*;
@@ -41,6 +44,31 @@ public class MainController {
 	public String goRegist(HttpServletRequest request) {
 		
 		return "regist";
+	}
+	
+	/**
+	 * 注册信息处理接口
+	 * @param yh
+	 * @return
+	 */
+	@RequestMapping(value = "/regist" , method = RequestMethod.POST,produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String regist(YongHu yh) {
+		
+		PlanResult plan=new PlanResult();
+		int count=yongHuService.add(yh);
+		if(count==0) {
+			plan.setStatus(count);
+			plan.setMsg("系统错误，请联系维护人员");
+			return JsonUtil.getJsonFromObject(plan);
+		}else {
+			plan.setStatus(0);
+			plan.setMsg("注册成功");
+			plan.setData(yh);
+			plan.setUrl("/main/goLogin");
+		}
+		
+		return JsonUtil.getJsonFromObject(plan);
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST,produces="plain/text; charset=UTF-8")

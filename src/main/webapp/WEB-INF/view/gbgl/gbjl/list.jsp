@@ -36,7 +36,6 @@ $(function(){
 	initGBSJKSDTB();
 	initGBSJJSDTB();
 	initSearchLB();
-	initAddLB();
 	initOutputBut();
 	initTab1();
 });
@@ -62,15 +61,6 @@ function initSearchLB(){
 			var gbsjks=gbsjksDTB.datetimebox("getValue");
 			var gbsjjs=gbsjjsDTB.datetimebox("getValue");
 			tab1.datagrid("load",{ddh:ddh,cph:cph,gbsjks:gbsjks,gbsjjs:gbsjjs});
-		}
-	});
-}
-
-function initAddLB(){
-	$("#add_but").linkbutton({
-		iconCls:"icon-add",
-		onClick:function(){
-			location.href=gbglPath+"gbjl/new";
 		}
 	});
 }
@@ -152,7 +142,6 @@ function setFitWidthInParent(o){
 			<input id="gbsjks_dtb"/>-
 			<input id="gbsjjs_dtb"/>
 			<a class="search_but" id="search_but">查询</a>
-			<a id="add_but">添加</a>
          	<a id="output_but">导出</a>
 		</div>
 		<table id="tab1">

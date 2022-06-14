@@ -27,14 +27,6 @@ public class GBGLController {
 	@Autowired
 	private DaYinJiLuService daYinJiLuService;
 	public static final String MODULE_NAME="gbgl";
-	
-	@RequestMapping(value="/bdjl/new")
-	public String goBdjlNew(HttpServletRequest request) {
-		
-		//publicService.selectNav(request);
-		
-		return MODULE_NAME+"/bdjl/new";
-	}
 
 	/**
 	 * 跳转到过磅管理-磅单记录-编辑页面
@@ -114,14 +106,6 @@ public class GBGLController {
 		}
 			
 		return jsonMap;
-	}
-	
-	@RequestMapping(value="/gbjl/new")
-	public String goGbjlNew(HttpServletRequest request) {
-		
-		//publicService.selectNav(request);
-		
-		return MODULE_NAME+"/gbjl/new";
 	}
 
 	/**
