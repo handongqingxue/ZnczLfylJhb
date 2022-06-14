@@ -26,4 +26,15 @@ public class CheLiangServiceImpl implements CheLiangService {
 		// TODO Auto-generated method stub
 		return cheLiangDao.queryList(cph, (page-1)*rows, rows, sort, order);
 	}
+
+	@Override
+	public int updateWcddcsByCph(String cph) {
+		// TODO Auto-generated method stub
+		int count=cheLiangDao.updateWcddcsByCph(cph);
+		int wcddcs=cheLiangDao.getWcddcsByCphLx(cph,CheLiang.MO_SHENG_CHE_LIANG);
+		if(wcddcs>=CheLiang.DSBCLBZZ) {
+			
+		}
+		return count;
+	}
 }

@@ -16,4 +16,7 @@
 		</if> 
 		limit #{rowNum},#{rows}
 	</select>
+	<update id="updateWcddcsByCph">
+		update che_liang set wcddcs=wcddcs+1 where cph=#{cph}
+	</update>
 </mapper>

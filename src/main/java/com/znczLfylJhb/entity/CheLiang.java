@@ -15,6 +15,11 @@ public class CheLiang {
 	 */
 	public static final Integer YI_SHI_BIE_CHE_LIANG=3;
 	
+	/**
+	 * 待识别车辆标准值
+	 */
+	public static final Integer DSBCLBZZ=3;
+	
 	private Integer id;
 	public Integer getId() {
 		return id;

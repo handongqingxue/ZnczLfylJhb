@@ -10,4 +10,6 @@ public interface CheLiangService {
 
 	List<CheLiang> queryList(String cph, int page, int rows, String sort, String order);
 
+	int updateWcddcsByCph(String cph);
+
 }
