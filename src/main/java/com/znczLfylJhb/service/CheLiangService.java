@@ -12,4 +12,10 @@ public interface CheLiangService {
 
 	int updateWcddcsByCph(String cph);
 
+	boolean checkIfExistByCph(String cph);
+
+	int add(CheLiang cl);
+
+	int getIdByCph(String cph);
+
 }

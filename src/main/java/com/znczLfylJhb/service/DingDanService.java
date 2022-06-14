@@ -38,4 +38,6 @@ public interface DingDanService {
 
 	String createDdhByDateYMD();
 
+	String getCphByBfhDdzt(Integer bfh, String ddztMc);
+
 }

@@ -146,4 +146,10 @@ public class DingDanServiceImpl implements DingDanService {
 			ddhxhStr="0"+ddhxh;
 		return ddhDate+ddhxhStr;
 	}
+
+	@Override
+	public String getCphByBfhDdzt(Integer bfh, String ddztMc) {
+		// TODO Auto-generated method stub
+		return dingDanDao.getCphByBfhDdzt(bfh, ddztMc);
+	}
 }

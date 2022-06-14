@@ -41,4 +41,6 @@ public interface DingDanMapper {
 
 	int getCountByDdhDate(@Param("ddhDate") String ddhDate);
 
+	String getCphByBfhDdzt(@Param("bfh") Integer bfh, @Param("ddztMc") String ddztMc);
+
 }

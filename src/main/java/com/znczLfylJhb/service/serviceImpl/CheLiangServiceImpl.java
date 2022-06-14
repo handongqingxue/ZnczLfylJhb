@@ -37,4 +37,23 @@ public class CheLiangServiceImpl implements CheLiangService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfExistByCph(String cph) {
+		// TODO Auto-generated method stub
+		int count=cheLiangDao.getCountByCph(cph);
+		return count>0?true:false;
+	}
+
+	@Override
+	public int add(CheLiang cl) {
+		// TODO Auto-generated method stub
+		return cheLiangDao.add(cl);
+	}
+
+	@Override
+	public int getIdByCph(String cph) {
+		// TODO Auto-generated method stub
+		return cheLiangDao.getIdByCph(cph);
+	}
 }

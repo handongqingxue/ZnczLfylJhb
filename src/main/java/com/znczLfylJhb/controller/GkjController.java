@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,39 @@ public class GkjController {
 	private GuoBangJiLuService guoBangJiLuService; 
 	//@Autowired
 	//private RglrCphJiLuService rglrCphJiLuService;
+
+	@RequestMapping(value="/addDingDan")
+	@ResponseBody
+	public Map<String, Object> addDingDan(String cph) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		try {
+			boolean exist=cheLiangService.checkIfExistByCph(cph);
+			if(!exist) {
+				CheLiang cl=new CheLiang();
+				cl.setCph(cph);
+				cl.setLx(CheLiang.MO_SHENG_CHE_LIANG);
+				cheLiangService.add(cl);
+			}
+			
+			DingDan dd=new DingDan();
+			int clId=cheLiangService.getIdByCph(cph);
+			dd.setClId(clId);
+			int count=dingDanService.add(dd);
+			if(count>0) {
+				jsonMap.put("status", "ok");
+				jsonMap.put("message", "创建订单成功！");
+			}
+			else {
+				jsonMap.put("status", "no");
+				jsonMap.put("message", "创建订单失败！");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonMap;
+	}
 
 	@RequestMapping(value="/getDingDan")
 	@ResponseBody
@@ -261,6 +295,24 @@ public class GkjController {
 		}
 		else {
 			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/getCphByBfhDdzt")
+	@ResponseBody
+	public Map<String, Object> getCphByBfhDdzt(Integer bfh, String ddztMc) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		String cph=dingDanService.getCphByBfhDdzt(bfh, ddztMc);
+		if(StringUtils.isEmpty(cph)) {
+			jsonMap.put("status", "no");
+			jsonMap.put("message", "车牌号不存在！");
+		}
+		else {
+			jsonMap.put("status", "ok");
+			jsonMap.put("cph", cph);
 		}
 		return jsonMap;
 	}
