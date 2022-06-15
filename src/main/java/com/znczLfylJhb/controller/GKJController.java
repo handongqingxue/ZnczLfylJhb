@@ -20,6 +20,7 @@ import com.znczLfylJhb.socket.ProxySet;
 import com.znczLfylJhb.socket.SocketProxy;
  */
 
+//ЛњЦїТы
 @Controller
 @RequestMapping("/gkj")
 public class GKJController {
@@ -191,6 +192,7 @@ public class GKJController {
 	public Map<String, Object> editBangDanJiLu(BangDanJiLu bdjl) {
 
 		System.out.println("ddId==="+bdjl.getDdId());
+		System.out.println("ejzl==="+bdjl.getEjzl());
 		System.out.println("mz==="+bdjl.getMz());
 		System.out.println("pz==="+bdjl.getPz());
 		System.out.println("jz==="+bdjl.getJz());

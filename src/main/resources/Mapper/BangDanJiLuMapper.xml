@@ -34,6 +34,9 @@
 	<update id="edit" parameterType="com.znczLfylJhb.entity.BangDanJiLu">
 		update bang_dan_ji_lu set 
 		<trim suffixOverrides=",">
+			<if test="ejzl!=null">
+				ejzl=#{ejzl},
+			</if>
 			<if test="mz!=null">
 				mz=#{mz},
 			</if>
@@ -73,7 +76,7 @@
 		select bdjl.*,dd.ddh from bang_dan_ji_lu bdjl,ding_dan dd where bdjl.ddId=dd.id and bdjl.id=#{id}
 	</select>
 	<select id="selectByDdId" resultType="com.znczLfylJhb.entity.BangDanJiLu">
-		select bdjl.*,dd.ddh,dd.cph from bang_dan_ji_lu bdjl,ding_dan dd where bdjl.ddId=dd.id and bdjl.ddId=#{ddId}
+		select bdjl.*,dd.ddh,cl.cph from bang_dan_ji_lu bdjl,ding_dan dd,che_liang cl where bdjl.ddId=dd.id and dd.clId=cl.id and bdjl.ddId=#{ddId}
 	</select>
 	<delete id="deleteByDdId">
 		delete from bang_dan_ji_lu where ddId=#{ddId}
