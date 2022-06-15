@@ -31,9 +31,11 @@ public class CheLiangServiceImpl implements CheLiangService {
 	public int updateWcddcsByCph(String cph) {
 		// TODO Auto-generated method stub
 		int count=cheLiangDao.updateWcddcsByCph(cph);
-		int wcddcs=cheLiangDao.getWcddcsByCphLx(cph,CheLiang.MO_SHENG_CHE_LIANG);
-		if(wcddcs>=CheLiang.DSBCLBZZ) {
-			cheLiangDao.updateLxByCph(CheLiang.DAI_SHI_BIE_CHE_LIANG,cph);
+		Integer wcddcs=cheLiangDao.getWcddcsByCphLx(cph,CheLiang.MO_SHENG_CHE_LIANG);
+		if(wcddcs!=null) {
+			if(wcddcs>=CheLiang.DSBCLBZZ) {
+				cheLiangDao.updateLxByCph(CheLiang.DAI_SHI_BIE_CHE_LIANG,cph);
+			}
 		}
 		return count;
 	}

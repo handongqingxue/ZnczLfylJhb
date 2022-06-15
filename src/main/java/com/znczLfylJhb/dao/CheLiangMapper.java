@@ -16,7 +16,7 @@ public interface CheLiangMapper {
 
 	int updateWcddcsByCph(@Param("cph") String cph);
 
-	int getWcddcsByCphLx(@Param("cph") String cph, @Param("lx") Integer lx);
+	Integer getWcddcsByCphLx(@Param("cph") String cph, @Param("lx") Integer lx);
 
 	int updateLxByCph(@Param("lx") Integer lx, @Param("cph") String cph);
 
