@@ -134,15 +134,6 @@
 			<if test="ejzt!=null">
 				ejzt=#{ejzt},
 			</if>
-			<if test="sjsfzh!=null">
-				sjsfzh=#{sjsfzh},
-			</if>
-			<if test="sjxm!=null">
-				sjxm=#{sjxm},
-			</if>
-			<if test="cph!=null">
-				cph=#{cph},
-			</if>
 			<if test="yjbfh!=0">
 				yjbfh=#{yjbfh},
 			</if>
@@ -151,30 +142,6 @@
 			</if>
 			<if test="lxlx!=null">
 				lxlx=#{lxlx},
-			</if>
-			<if test="yzxzl!=null">
-				yzxzl=#{yzxzl},
-			</if>
-			<if test="sjzl!=null">
-				sjzl=#{sjzl},
-			</if>
-			<if test="zlceb!=null">
-				zlceb=#{zlceb},
-			</if>
-			<if test="wzlxId!=null">
-				wzlxId=#{wzlxId},
-			</if>
-			<if test="wzId!=null">
-				wzId=#{wzId},
-			</if>
-			<if test="yssId!=null">
-				yssId=#{yssId},
-			</if>
-			<if test="fhdwId!=null">
-				fhdwId=#{fhdwId},
-			</if>
-			<if test="shbmId!=null">
-				shbmId=#{shbmId},
 			</if>
 				bjsj=now()
 		</trim>
@@ -195,41 +162,8 @@
 			<if test="xejzt!=0">
 				ejzt=#{xejzt},
 			</if>
-			<if test="sjsfzh!=null">
-				sjsfzh=#{sjsfzh},
-			</if>
-			<if test="sjxm!=null">
-				sjxm=#{sjxm},
-			</if>
-			<if test="cph!=null">
-				cph=#{cph},
-			</if>
 			<if test="lxlx!=null">
 				lxlx=#{lxlx},
-			</if>
-			<if test="yzxzl!=null">
-				yzxzl=#{yzxzl},
-			</if>
-			<if test="sjzl!=null">
-				sjzl=#{sjzl},
-			</if>
-			<if test="zlceb!=null">
-				zlceb=#{zlceb},
-			</if>
-			<if test="wzlxId!=null">
-				wzlxId=#{wzlxId},
-			</if>
-			<if test="wzId!=null">
-				wzId=#{wzId},
-			</if>
-			<if test="yssId!=null">
-				yssId=#{yssId},
-			</if>
-			<if test="fhdwId!=null">
-				fhdwId=#{fhdwId},
-			</if>
-			<if test="shbmId!=null">
-				shbmId=#{shbmId},
 			</if>
 				bjsj=now()
 		</trim>
@@ -248,7 +182,7 @@
 		</if>
 	</update>
 	<select id="getByZtCph" resultType="com.znczLfylJhb.entity.DingDan">
-		select * from ding_dan where ddztId=#{ddztId} and cph=#{cph}
+		select dd.* from ding_dan dd,che_liang cl where dd.clId=cl.id and dd.ddztId=#{ddztId} and cl.cph=#{cph}
 	</select>
 	<select id="getByZt" resultType="com.znczLfylJhb.entity.DingDan">
 		select dd.* from ding_dan dd,ding_dan_zhuang_tai ddzt where dd.ddztId=ddzt.id and ddzt.mc=#{ddztMc}

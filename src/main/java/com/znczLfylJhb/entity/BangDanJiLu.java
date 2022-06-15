@@ -9,6 +9,18 @@ public class BangDanJiLu {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public Float getYjzl() {
+		return yjzl;
+	}
+	public void setYjzl(Float yjzl) {
+		this.yjzl = yjzl;
+	}
+	public Float getEjzl() {
+		return ejzl;
+	}
+	public void setEjzl(Float ejzl) {
+		this.ejzl = ejzl;
+	}
 	public Float getMz() {
 		return mz;
 	}
@@ -93,6 +105,8 @@ public class BangDanJiLu {
 	public void setQygbsj(String qygbsj) {
 		this.qygbsj = qygbsj;
 	}
+	private Float yjzl;
+	private Float ejzl;
 	private Float mz;
 	private Float pz;
 	private Float jz;

@@ -22,7 +22,7 @@ import com.znczLfylJhb.socket.SocketProxy;
 
 @Controller
 @RequestMapping("/gkj")
-public class GkjController {
+public class GKJController {
 	
 	@Autowired
 	private DingDanService dingDanService;
@@ -168,9 +168,7 @@ public class GkjController {
 	public Map<String, Object> newBangDanJiLu(BangDanJiLu bdjl) {
 
 		System.out.println("ddId==="+bdjl.getDdId());
-		System.out.println("mz==="+bdjl.getMz());
-		System.out.println("pz==="+bdjl.getPz());
-		System.out.println("jz==="+bdjl.getJz());
+		System.out.println("yjzl==="+bdjl.getYjzl());
 		
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
