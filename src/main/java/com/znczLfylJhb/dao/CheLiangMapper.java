@@ -10,9 +10,9 @@ public interface CheLiangMapper {
 
 	int add(CheLiang cl);
 
-	int queryForInt(String cph);
+	int queryForInt(@Param("lx") Integer lx, @Param("cph") String cph);
 
-	List<CheLiang> queryList(@Param("cph") String cph, @Param("rowNum") int rowNum, @Param("rows") int rows, String sort, String order);
+	List<CheLiang> queryList(@Param("lx") Integer lx, @Param("cph") String cph, @Param("rowNum") int rowNum, @Param("rows") int rows, String sort, String order);
 
 	int updateWcddcsByCph(@Param("cph") String cph);
 

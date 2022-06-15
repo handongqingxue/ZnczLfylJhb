@@ -58,15 +58,25 @@
 		</trim>
 	</insert>
 	<select id="queryForInt" resultType="java.lang.Integer">
-		select count(*) from che_liang where 1=1
+		select count(*) from che_liang cl left join yun_shu_shang yss on cl.yssId=yss.id
+		 left join fa_huo_dan_wei fhdw on cl.fhdwId=fhdw.id left join shou_huo_bu_men shbm on cl.shbmId=shbm.id
+		 left join wu_zi_lei_xing wzlx on cl.wzlxId=wzlx.id left join wu_zi wz on cl.wzId=wz.id where 1=1
 		<if test="cph!=''&amp;cph!=null">
 			and cl.cph like CONCAT('%',#{cph},'%')
 		</if> 
+		<if test="lx!=''&amp;lx!=null">
+			and cl.lx=#{lx}
+		</if> 
 	</select>
 	<select id="queryList" resultType="com.znczLfylJhb.entity.CheLiang">
-		select cl.id,cl.cph from che_liang cl where 1=1
+		select cl.* from che_liang cl left join yun_shu_shang yss on cl.yssId=yss.id
+		 left join fa_huo_dan_wei fhdw on cl.fhdwId=fhdw.id left join shou_huo_bu_men shbm on cl.shbmId=shbm.id
+		 left join wu_zi_lei_xing wzlx on cl.wzlxId=wzlx.id left join wu_zi wz on cl.wzId=wz.id where 1=1
 		<if test="cph!=''&amp;cph!=null">
 			and cl.cph like CONCAT('%',#{cph},'%')
+		</if> 
+		<if test="lx!=''&amp;lx!=null">
+			and cl.lx=#{lx}
 		</if> 
 		limit #{rowNum},#{rows}
 	</select>

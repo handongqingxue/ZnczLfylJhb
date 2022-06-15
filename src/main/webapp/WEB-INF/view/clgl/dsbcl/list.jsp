@@ -46,7 +46,7 @@ function initSearchLB(){
 
 function initTab1(){
 	tab1=$("#tab1").datagrid({
-		title:"陌生车辆查询",
+		title:"待识别车辆查询",
 		url:clglPath+"queryZHCXList",
 		toolbar:"#toolbar",
 		width:setFitWidthInParent("body"),
@@ -55,7 +55,7 @@ function initTab1(){
 		pageSize:10,
 		columns:[[
 			{field:"cph",title:"车牌号",width:100},
-			{field:"wcddcs",title:"完成订单次数",width:150},
+			{field:"wcddcs",title:"完成订单次数",width:110},
 			{field:"cjsj",title:"创建时间",width:150},
             {field:"id",title:"操作",width:110,formatter:function(value,row){
             	var str="";
