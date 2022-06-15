@@ -51,6 +51,8 @@ public class GKJController {
 			}
 			
 			DingDan dd=new DingDan();
+			String ddh=dingDanService.createDdhByDateYMD();
+			dd.setDdh(ddh);
 			int clId=cheLiangService.getIdByCph(cph);
 			dd.setClId(clId);
 			int count=dingDanService.add(dd);
