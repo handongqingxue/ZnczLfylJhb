@@ -26,7 +26,11 @@ import com.znczLfylJhb.entity.*;
 public class DDGLController {
 
 	@Autowired
+	private DingDanService dingDanService;
+	@Autowired
 	private DingDanZhuangTaiService dingDanZhuangTaiService;
+	@Autowired
+	private RglrCphJiLuService rglrCphJiLuService;
 	public static final String MODULE_NAME="ddgl";
 	
 	@RequestMapping(value="/ddzt/new")
@@ -70,6 +74,19 @@ public class DDGLController {
 		request.setAttribute("ddzt", ddzt);
 		
 		return MODULE_NAME+"/ddzt/detail";
+	}
+
+	/**
+	 * 跳转到订单管理-综合查询-列表页面
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/zhcx/list")
+	public String goZhcxList(HttpServletRequest request) {
+		
+		//publicService.selectNav(request);
+		
+		return MODULE_NAME+"/zhcx/list";
 	}
 	
 	@RequestMapping(value="/newDingDanZhuangTai")
@@ -126,5 +143,70 @@ public class DDGLController {
 		}
 		
 		return jsonMap;
+	}
+	
+	@RequestMapping(value="/queryZHCXList")
+	@ResponseBody
+	public Map<String, Object> queryZHCXList(String ddh,Integer ddztId,String ddztMc,String cph,String yssMc,String wzMc,
+			String fhdwMc,String shbmMc,int page,int rows,String sort,String order) {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		try {
+			int count = dingDanService.queryZHCXForInt(ddh,ddztId,ddztMc,cph,yssMc,wzMc,fhdwMc,shbmMc);
+			List<DingDan> zhglList=dingDanService.queryZHCXList(ddh,ddztId,ddztMc,cph,yssMc,wzMc,fhdwMc,shbmMc, page, rows, sort, order);
+			
+			jsonMap.put("total", count);
+			jsonMap.put("rows", zhglList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return jsonMap;
+	}
+	
+	@RequestMapping(value="/queryDingDanZhuangTaiCBBList")
+	@ResponseBody
+	public Map<String, Object> queryDingDanZhuangTaiCBBList() {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		List<DingDanZhuangTai> ddztList=dingDanZhuangTaiService.queryCBBList();
+		
+		jsonMap.put("rows", ddztList);
+		
+		return jsonMap;
+	}
+	
+	@RequestMapping(value="/queryXzCphCBBList")
+	@ResponseBody
+	public Map<String, Object> queryXzCphCBBList(int page,int rows,String sort,String order) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		List<String> cphList=rglrCphJiLuService.queryXzCphCBBList(page, rows, sort, order);
+		
+		jsonMap.put("rows", cphList);
+		
+		return jsonMap;
+	}
+	
+	@RequestMapping(value="/queryLrSjcCBBList")
+	@ResponseBody
+	public List<RglrCphJiLu> queryLrSjcCBBList(String q,int page,int rows,String sort,String order) {
+
+		List<RglrCphJiLu> sjcList=rglrCphJiLuService.queryLrSjcCBBList(q, page, rows, sort, order);
+		
+		return sjcList;
+	}
+	
+	@RequestMapping(value="/queryLrWscphCBBList")
+	@ResponseBody
+	public List<RglrCphJiLu> queryLrWscphCBBList(String sjc,String q,int page,int rows,String sort,String order) {
+
+		List<RglrCphJiLu> cphList=rglrCphJiLuService.queryLrWscphCBBList(sjc, q, page, rows, sort, order);
+		
+		return cphList;
 	}
 }

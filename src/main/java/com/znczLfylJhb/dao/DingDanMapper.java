@@ -9,11 +9,10 @@ import com.znczLfylJhb.entity.*;
 public interface DingDanMapper {
 
 	int queryZHCXForInt(@Param("ddh") String ddh, @Param("ddztId") Integer ddztId, @Param("ddztMc") String ddztMc, @Param("cph") String cph, @Param("yssMc") String yssMc, @Param("wzMc") String wzMc, 
-			@Param("fhdwMc") String fhdwMc, @Param("shbmMc") String shbmMc, @Param("sjxm") String sjxm, @Param("sjsfzh") String sjsfzh);
+			@Param("fhdwMc") String fhdwMc, @Param("shbmMc") String shbmMc);
 
 	List<DingDan> queryZHCXList(@Param("ddh") String ddh, @Param("ddztId") Integer ddztId, @Param("ddztMc") String ddztMc, @Param("cph") String cph, @Param("yssMc") String yssMc, @Param("wzMc") String wzMc, 
-			@Param("fhdwMc") String fhdwMc, @Param("shbmMc") String shbmMc, @Param("sjxm") String sjxm, @Param("sjsfzh") String sjsfzh, 
-			@Param("rowNum") int rowNum, @Param("rows") int rows, String sort, String order);
+			@Param("fhdwMc") String fhdwMc, @Param("shbmMc") String shbmMc, @Param("rowNum") int rowNum, @Param("rows") int rows, String sort, String order);
 
 	DingDan selectById(@Param("id") String id);
 

@@ -20,24 +20,20 @@ public class DingDanServiceImpl implements DingDanService {
 	private DingDanMapper dingDanDao;
 	@Autowired
 	private DingDanZhuangTaiMapper dingDanZhuangTaiDao;
-	@Autowired
-	private BangDanJiLuMapper bangDanJiLuDao;
-	@Autowired
-	private GuoBangJiLuMapper guoBangJiLuDao;
 	private SimpleDateFormat ddhSdf=new SimpleDateFormat("yyyyMMdd");
 
 	@Override
 	public int queryZHCXForInt(String ddh, Integer ddztId, String ddztMc, String cph, String yssMc, String wzMc, 
-			String fhdwMc, String shbmMc, String sjxm, String sjsfzh) {
+			String fhdwMc, String shbmMc) {
 		// TODO Auto-generated method stub
-		return dingDanDao.queryZHCXForInt(ddh,ddztId,ddztMc,cph,yssMc,wzMc,fhdwMc,shbmMc,sjxm,sjsfzh);
+		return dingDanDao.queryZHCXForInt(ddh,ddztId,ddztMc,cph,yssMc,wzMc,fhdwMc,shbmMc);
 	}
 
 	@Override
 	public List<DingDan> queryZHCXList(String ddh, Integer ddztId, String ddztMc, String cph, String yssMc, String wzMc, 
-			String fhdwMc, String shbmMc, String sjxm, String sjsfzh, int page, int rows, String sort, String order) {
+			String fhdwMc, String shbmMc, int page, int rows, String sort, String order) {
 		// TODO Auto-generated method stub
-		return dingDanDao.queryZHCXList(ddh, ddztId, ddztMc, cph, yssMc, wzMc, fhdwMc, shbmMc, sjxm, sjsfzh, (page-1)*rows, rows, sort, order);
+		return dingDanDao.queryZHCXList(ddh, ddztId, ddztMc, cph, yssMc, wzMc, fhdwMc, shbmMc, (page-1)*rows, rows, sort, order);
 	}
 
 	@Override

@@ -116,6 +116,72 @@ public class DingDan {
 	public void setClId(Integer clId) {
 		this.clId = clId;
 	}
+	public String getCph() {
+		return cph;
+	}
+	public void setCph(String cph) {
+		this.cph = cph;
+	}
+	public Integer getWzlxId() {
+		return wzlxId;
+	}
+	public void setWzlxId(Integer wzlxId) {
+		this.wzlxId = wzlxId;
+	}
+	public String getWzlxMc() {
+		return wzlxMc;
+	}
+	public void setWzlxMc(String wzlxMc) {
+		this.wzlxMc = wzlxMc;
+	}
+	public Integer getWzId() {
+		return wzId;
+	}
+	public void setWzId(Integer wzId) {
+		this.wzId = wzId;
+	}
+	public String getWzMc() {
+		return wzMc;
+	}
+	public void setWzMc(String wzMc) {
+		this.wzMc = wzMc;
+	}
+	public Integer getYssId() {
+		return yssId;
+	}
+	public void setYssId(Integer yssId) {
+		this.yssId = yssId;
+	}
+	public String getYssMc() {
+		return yssMc;
+	}
+	public void setYssMc(String yssMc) {
+		this.yssMc = yssMc;
+	}
+	public Integer getFhdwId() {
+		return fhdwId;
+	}
+	public void setFhdwId(Integer fhdwId) {
+		this.fhdwId = fhdwId;
+	}
+	public String getFhdwMc() {
+		return fhdwMc;
+	}
+	public void setFhdwMc(String fhdwMc) {
+		this.fhdwMc = fhdwMc;
+	}
+	public Integer getShbmId() {
+		return shbmId;
+	}
+	public void setShbmId(Integer shbmId) {
+		this.shbmId = shbmId;
+	}
+	public String getShbmMc() {
+		return shbmMc;
+	}
+	public void setShbmMc(String shbmMc) {
+		this.shbmMc = shbmMc;
+	}
 	public String getBjsj() {
 		return bjsj;
 	}
@@ -127,13 +193,24 @@ public class DingDan {
 	private String ddztMc;
 	private Integer xddztId;//新订单状态id
 	private String xddztMc;//新订单状态名称
-	private Integer yjzt;//一检状态(1.待上磅 2.上磅中 3.已完成)
-	private Integer xyjzt;//新一检状态(1.待上磅 2.上磅中 3.已完成)
-	private Integer ejzt;//二检状态(1.待上磅 2.上磅中 3.已完成)
-	private Integer xejzt;//新二检状态(1.待上磅 2.上磅中 3.已完成)
+	private Integer yjzt;//一检状态
+	private Integer xyjzt;//新一检状态
+	private Integer ejzt;//二检状态
+	private Integer xejzt;//新二检状态
 	private Integer yjbfh=0;//一检磅房号
 	private Integer ejbfh=0;//二检磅房号
 	private Integer lxlx;//流向类型
 	private Integer clId;
+	private String cph;
+	private Integer wzlxId;
+	private String wzlxMc;
+	private Integer wzId;
+	private String wzMc;
+	private Integer yssId;
+	private String yssMc;
+	private Integer fhdwId;
+	private String fhdwMc;
+	private Integer shbmId;
+	private String shbmMc;
 	private String bjsj;//编辑时间
 }

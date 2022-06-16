@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczLfylJhb.entity.*;
 import com.znczLfylJhb.service.*;
-/*
- * 
-import com.znczLfylJhb.socket.ProxySet;
-import com.znczLfylJhb.socket.SocketProxy;
- */
+import com.znczLfylJhb.socket.*;
 
 //»úÆ÷Âë
 @Controller
@@ -33,8 +29,8 @@ public class GKJController {
 	private BangDanJiLuService bangDanJiLuService;
 	@Autowired
 	private GuoBangJiLuService guoBangJiLuService; 
-	//@Autowired
-	//private RglrCphJiLuService rglrCphJiLuService;
+	@Autowired
+	private RglrCphJiLuService rglrCphJiLuService;
 
 	@RequestMapping(value="/addDingDan")
 	@ResponseBody
@@ -336,8 +332,6 @@ public class GKJController {
 		return jsonMap;
 	}
 
-	/**
-	 * 
 	@RequestMapping(value="/sendCphToClient")
 	@ResponseBody
 	public Map<String, Object> sendCphToClient(Integer ddId,String cph,Integer bfNoFlag,Integer jyFlag) {
@@ -362,7 +356,6 @@ public class GKJController {
 		
 		return jsonMap;
 	}
-	 */
 	
 	public static void main(String[] args) {
 		
