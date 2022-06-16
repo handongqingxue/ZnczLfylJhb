@@ -54,8 +54,22 @@ public class CheLiangServiceImpl implements CheLiangService {
 	}
 
 	@Override
+	public int edit(CheLiang cl) {
+		// TODO Auto-generated method stub
+		if(CheLiang.DAI_SHI_BIE_CHE_LIANG==cl.getLx())
+			cl.setLx(CheLiang.YI_SHI_BIE_CHE_LIANG);
+		return cheLiangDao.edit(cl);
+	}
+
+	@Override
 	public int getIdByCph(String cph) {
 		// TODO Auto-generated method stub
 		return cheLiangDao.getIdByCph(cph);
+	}
+
+	@Override
+	public CheLiang selectById(String id) {
+		// TODO Auto-generated method stub
+		return cheLiangDao.selectById(id);
 	}
 }

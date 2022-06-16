@@ -58,7 +58,7 @@ function initTab1(){
 			{field:"wcddcs",title:"完成订单次数",width:110},
 			{field:"cjsj",title:"创建时间",width:150},
             {field:"id",title:"操作",width:110,formatter:function(value,row){
-            	var str="";
+            	var str="<a href=\"edit?id="+value+"\">编辑</a>";
             	return str;
             }}
 	    ]],

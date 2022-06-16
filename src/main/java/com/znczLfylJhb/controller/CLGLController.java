@@ -36,6 +36,17 @@ public class CLGLController {
 		return MODULE_NAME+"/mscl/list";
 	}
 	
+	@RequestMapping(value="/dsbcl/edit")
+	public String goDsbclEdit(HttpServletRequest request) {
+		
+		//publicService.selectNav(request);
+		String id = request.getParameter("id");
+		CheLiang cl=cheLiangService.selectById(id);
+		request.setAttribute("cl", cl);
+		
+		return MODULE_NAME+"/dsbcl/edit";
+	}
+	
 	/**
 	 * 跳转到车辆管理-待识别车辆-列表页面
 	 * @param request
@@ -62,6 +73,37 @@ public class CLGLController {
 		request.setAttribute("lx", CheLiang.YI_SHI_BIE_CHE_LIANG);
 		
 		return MODULE_NAME+"/ysbcl/list";
+	}
+	
+	/**
+	 * 跳转到车辆管理-综合查询-列表页面
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/zhcx/list")
+	public String goZhcxList(HttpServletRequest request) {
+		
+		//publicService.selectNav(request);
+		
+		return MODULE_NAME+"/zhcx/list";
+	}
+
+	@RequestMapping(value="/editCheLiang")
+	@ResponseBody
+	public Map<String, Object> editCheLiang(CheLiang cl) {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		int count=cheLiangService.edit(cl);
+		if(count>0) {
+			jsonMap.put("message", "ok");
+			jsonMap.put("info", "编辑车辆成功！");
+		}
+		else {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "编辑车辆失败！");
+		}
+		return jsonMap;
 	}
 
 	@RequestMapping(value="/queryZHCXList")

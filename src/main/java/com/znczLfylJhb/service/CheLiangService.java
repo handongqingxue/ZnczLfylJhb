@@ -16,6 +16,10 @@ public interface CheLiangService {
 
 	int add(CheLiang cl);
 
+	int edit(CheLiang cl);
+
 	int getIdByCph(String cph);
+
+	CheLiang selectById(String id);
 
 }

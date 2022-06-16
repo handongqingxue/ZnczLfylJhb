@@ -51,11 +51,23 @@ public class CheLiang {
 	public void setYssId(Integer yssId) {
 		this.yssId = yssId;
 	}
+	public String getYssMc() {
+		return yssMc;
+	}
+	public void setYssMc(String yssMc) {
+		this.yssMc = yssMc;
+	}
 	public Integer getFhdwId() {
 		return fhdwId;
 	}
 	public void setFhdwId(Integer fhdwId) {
 		this.fhdwId = fhdwId;
+	}
+	public String getFhdwMc() {
+		return fhdwMc;
+	}
+	public void setFhdwMc(String fhdwMc) {
+		this.fhdwMc = fhdwMc;
 	}
 	public Integer getShbmId() {
 		return shbmId;
@@ -63,17 +75,35 @@ public class CheLiang {
 	public void setShbmId(Integer shbmId) {
 		this.shbmId = shbmId;
 	}
+	public String getShbmMc() {
+		return shbmMc;
+	}
+	public void setShbmMc(String shbmMc) {
+		this.shbmMc = shbmMc;
+	}
 	public Integer getWzlxId() {
 		return wzlxId;
 	}
 	public void setWzlxId(Integer wzlxId) {
 		this.wzlxId = wzlxId;
 	}
+	public String getWzlxMc() {
+		return wzlxMc;
+	}
+	public void setWzlxMc(String wzlxMc) {
+		this.wzlxMc = wzlxMc;
+	}
 	public Integer getWzId() {
 		return wzId;
 	}
 	public void setWzId(Integer wzId) {
 		this.wzId = wzId;
+	}
+	public String getWzMc() {
+		return wzMc;
+	}
+	public void setWzMc(String wzMc) {
+		this.wzMc = wzMc;
 	}
 	public String getCjsj() {
 		return cjsj;
@@ -85,9 +115,14 @@ public class CheLiang {
 	private Integer lx;//车辆类型 1.陌生车辆 2.待识别车辆 3.已识别车辆
 	private Integer wcddcs;
 	private Integer yssId;
+	private String yssMc;
 	private Integer fhdwId;
+	private String fhdwMc;
 	private Integer shbmId;
+	private String shbmMc;
 	private Integer wzlxId;
+	private String wzlxMc;
 	private Integer wzId;
+	private String wzMc;
 	private String cjsj;
 }

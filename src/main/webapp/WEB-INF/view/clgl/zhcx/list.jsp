@@ -28,7 +28,6 @@
 <script type="text/javascript">
 var path='<%=basePath %>';
 var clglPath=path+'clgl/';
-var lx='${requestScope.lx}';
 $(function(){
 	initSearchLB();
 	initTab1();
@@ -46,15 +45,29 @@ function initSearchLB(){
 
 function initTab1(){
 	tab1=$("#tab1").datagrid({
-		title:"已识别车辆查询",
+		title:"综合查询",
 		url:clglPath+"queryZHCXList",
 		toolbar:"#toolbar",
 		width:setFitWidthInParent("body"),
-		queryParams:{lx:lx},
 		pagination:true,
 		pageSize:10,
 		columns:[[
 			{field:"cph",title:"车牌号",width:100},
+			{field:"lx",title:"类型",width:100,formatter:function(value,row){
+            	var str;
+            	switch (value) {
+				case 1:
+					str="陌生";
+					break;
+				case 2:
+					str="待识别";
+					break;
+				case 3:
+					str="已识别";
+					break;
+				}
+            	return str+="车辆";
+            }},
 			{field:"wcddcs",title:"完成订单次数",width:110},
 			{field:"yssMc",title:"运输商",width:150},
 			{field:"fhdwMc",title:"发货单位",width:150},
@@ -70,7 +83,7 @@ function initTab1(){
         onLoadSuccess:function(data){
 			if(data.total==0){
 				$(this).datagrid("appendRow",{cph:"<div style=\"text-align:center;\">暂无信息<div>"});
-				$(this).datagrid("mergeCells",{index:0,field:"cph",colspan:9});
+				$(this).datagrid("mergeCells",{index:0,field:"cph",colspan:10});
 				data.total=0;
 			}
 			

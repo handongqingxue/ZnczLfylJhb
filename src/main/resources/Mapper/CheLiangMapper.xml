@@ -57,6 +57,33 @@
 				now()
 		</trim>
 	</insert>
+	<update id="edit" parameterType="com.znczLfylJhb.entity.CheLiang">
+		update che_liang set 
+		<trim suffixOverrides=",">
+			<if test="cph!=null">
+				cph=#{cph},
+			</if>
+			<if test="lx!=null">
+				lx=#{lx},
+			</if>
+			<if test="yssId!=null">
+				yssId=#{yssId},
+			</if>
+			<if test="fhdwId!=null">
+				fhdwId=#{fhdwId},
+			</if>
+			<if test="shbmId!=0">
+				shbmId=#{shbmId},
+			</if>
+			<if test="wzlxId!=0">
+				wzlxId=#{wzlxId},
+			</if>
+			<if test="wzId!=null">
+				wzId=#{wzId},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
 	<select id="queryForInt" resultType="java.lang.Integer">
 		select count(*) from che_liang cl left join yun_shu_shang yss on cl.yssId=yss.id
 		 left join fa_huo_dan_wei fhdw on cl.fhdwId=fhdw.id left join shou_huo_bu_men shbm on cl.shbmId=shbm.id
@@ -69,7 +96,7 @@
 		</if> 
 	</select>
 	<select id="queryList" resultType="com.znczLfylJhb.entity.CheLiang">
-		select cl.* from che_liang cl left join yun_shu_shang yss on cl.yssId=yss.id
+		select cl.*,wzlx.mc wzlxMc,wz.mc wzMc,yss.mc yssMc,fhdw.mc fhdwMc,shbm.mc shbmMc from che_liang cl left join yun_shu_shang yss on cl.yssId=yss.id
 		 left join fa_huo_dan_wei fhdw on cl.fhdwId=fhdw.id left join shou_huo_bu_men shbm on cl.shbmId=shbm.id
 		 left join wu_zi_lei_xing wzlx on cl.wzlxId=wzlx.id left join wu_zi wz on cl.wzId=wz.id where 1=1
 		<if test="cph!=''&amp;cph!=null">
@@ -94,5 +121,10 @@
 	</select>
 	<select id="getIdByCph" resultType="java.lang.Integer">
 		select id from che_liang where cph=#{cph}
+	</select>
+	<select id="selectById" resultType="com.znczLfylJhb.entity.CheLiang">
+		select cl.*,wzlx.mc wzlxMc,wz.mc wzMc,yss.mc yssMc,fhdw.mc fhdwMc,shbm.mc shbmMc from che_liang cl left join wu_zi_lei_xing wzlx on cl.wzlxId=wzlx.id left join wu_zi wz on cl.wzId=wz.id
+		 left join yun_shu_shang yss on cl.yssId=yss.id left join fa_huo_dan_wei fhdw on cl.fhdwId=fhdw.id
+		 left join shou_huo_bu_men shbm on cl.shbmId=shbm.id where cl.id=#{id}
 	</select>
 </mapper>

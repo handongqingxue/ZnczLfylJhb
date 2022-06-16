@@ -10,6 +10,8 @@ public interface CheLiangMapper {
 
 	int add(CheLiang cl);
 
+	int edit(CheLiang cl);
+
 	int queryForInt(@Param("lx") Integer lx, @Param("cph") String cph);
 
 	List<CheLiang> queryList(@Param("lx") Integer lx, @Param("cph") String cph, @Param("rowNum") int rowNum, @Param("rows") int rows, String sort, String order);
@@ -23,5 +25,7 @@ public interface CheLiangMapper {
 	int getCountByCph(@Param("cph") String cph);
 
 	int getIdByCph(@Param("cph") String cph);
+
+	CheLiang selectById(@Param("id") String id);
 
 }
