@@ -39,7 +39,7 @@ function initSearchLB(){
 		iconCls:"icon-search",
 		onClick:function(){
 			var cph=$("#toolbar #cph").val();
-			tab1.datagrid("load",{cph:cph});
+			tab1.datagrid("load",{cph:cph,lx:lx});
 		}
 	});
 }

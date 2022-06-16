@@ -6,9 +6,10 @@ import com.znczLfylJhb.entity.*;
 
 public interface CheLiangService {
 
-	int queryForInt(Integer lx, String cph);
+	int queryForInt(String cph, Integer lx, String yssMc, String fhdwMc, String shbmMc, String wzlxMc, String wzMc);
 
-	List<CheLiang> queryList(Integer lx, String cph, int page, int rows, String sort, String order);
+	List<CheLiang> queryList(String cph, Integer lx, String yssMc, String fhdwMc,
+			String shbmMc, String wzlxMc, String wzMc, int page, int rows, String sort, String order);
 
 	int updateWcddcsByCph(String cph);
 

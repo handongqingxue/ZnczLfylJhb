@@ -16,15 +16,16 @@ public class CheLiangServiceImpl implements CheLiangService {
 	private CheLiangMapper cheLiangDao;
 
 	@Override
-	public int queryForInt(Integer lx, String cph) {
+	public int queryForInt(String cph, Integer lx, String yssMc, String fhdwMc, String shbmMc, String wzlxMc, String wzMc) {
 		// TODO Auto-generated method stub
-		return cheLiangDao.queryForInt(lx, cph);
+		return cheLiangDao.queryForInt(cph, lx, yssMc, fhdwMc, shbmMc, wzlxMc, wzMc);
 	}
 
 	@Override
-	public List<CheLiang> queryList(Integer lx, String cph, int page, int rows, String sort, String order) {
+	public List<CheLiang> queryList(String cph, Integer lx, String yssMc, String fhdwMc,
+			String shbmMc, String wzlxMc, String wzMc, int page, int rows, String sort, String order) {
 		// TODO Auto-generated method stub
-		return cheLiangDao.queryList(lx, cph, (page-1)*rows, rows, sort, order);
+		return cheLiangDao.queryList(cph, lx, yssMc, fhdwMc, shbmMc, wzlxMc, wzMc, (page-1)*rows, rows, sort, order);
 	}
 
 	@Override

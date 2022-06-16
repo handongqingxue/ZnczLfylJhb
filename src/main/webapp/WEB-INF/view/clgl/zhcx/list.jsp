@@ -10,16 +10,30 @@
 	margin-left: 220px;
 }
 .tab1_div .toolbar{
+	height:64px;
+}
+.tab1_div .toolbar .row_div{
 	height:32px;
 }
-.tab1_div .toolbar .cph_span{
+.tab1_div .toolbar .row_div .cph_span,
+.tab1_div .toolbar .row_div .lx_span,
+.tab1_div .toolbar .row_div .yssMc_span,
+.tab1_div .toolbar .row_div .fhdwMc_span,
+.tab1_div .toolbar .row_div .shbmMc_span,
+.tab1_div .toolbar .row_div .wzlxMc_span,
+.tab1_div .toolbar .row_div .wzMc_span{
 	margin-left: 13px;
 }
-.tab1_div .toolbar .cph_inp{
+.tab1_div .toolbar .row_div .cph_inp,
+.tab1_div .toolbar .row_div .yssMc_inp,
+.tab1_div .toolbar .row_div .fhdwMc_inp,
+.tab1_div .toolbar .row_div .shbmMc_inp,
+.tab1_div .toolbar .row_div .wzlxMc_inp,
+.tab1_div .toolbar .row_div .wzMc_inp{
 	width: 120px;
 	height: 25px;
 }
-.tab1_div .toolbar .search_but{
+.tab1_div .toolbar .row_div .search_but{
 	margin-left: 13px;
 }
 </style>
@@ -29,16 +43,34 @@
 var path='<%=basePath %>';
 var clglPath=path+'clgl/';
 $(function(){
+	initLXCBB();
 	initSearchLB();
 	initTab1();
 });
+
+function initLXCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择"});
+	data.push({"value":"1","text":"陌生车辆"},{"value":"2","text":"待识别车辆"},{"value":"3","text":"已识别车辆"});
+	lxCBB=$("#lx_cbb").combobox({
+		valueField:"value",
+		textField:"text",
+		data:data
+	});
+}
 
 function initSearchLB(){
 	$("#search_but").linkbutton({
 		iconCls:"icon-search",
 		onClick:function(){
 			var cph=$("#toolbar #cph").val();
-			tab1.datagrid("load",{cph:cph});
+			var lx=lxCBB.combobox("getValue");
+			var yssMc=$("#toolbar #yssMc").val();
+			var fhdwMc=$("#toolbar #fhdwMc").val();
+			var shbmMc=$("#toolbar #shbmMc").val();
+			var wzlxMc=$("#toolbar #wzlxMc").val();
+			var wzMc=$("#toolbar #wzMc").val();
+			tab1.datagrid("load",{cph:cph,lx:lx,yssMc:yssMc,fhdwMc:fhdwMc,shbmMc:shbmMc,wzlxMc:wzlxMc,wzMc:wzMc});
 		}
 	});
 }
@@ -106,9 +138,25 @@ function setFitWidthInParent(o){
 	<%@include file="../../inc/side.jsp"%>
 	<div class="tab1_div" id="tab1_div">
 		<div class="toolbar" id="toolbar">
-			<span class="cph_span">车牌号：</span>
-			<input type="text" class="cph_inp" id="cph" placeholder="请输入车牌号"/>
-			<a class="search_but" id="search_but">查询</a>
+			<div class="row_div">
+				<span class="cph_span">车牌号：</span>
+				<input type="text" class="cph_inp" id="cph" placeholder="请输入车牌号"/>
+				<span class="lx_span">类型：</span>
+				<input id="lx_cbb"/>
+				<span class="yssMc_span">运输商：</span>
+				<input type="text" class="yssMc_inp" id="yssMc" placeholder="请输入运输商"/>
+				<span class="fhdwMc_span">发货单位：</span>
+				<input type="text" class="fhdwMc_inp" id="fhdwMc" placeholder="请输入发货单位"/>
+			</div>
+			<div class="row_div">
+				<span class="shbmMc_span">收货部门：</span>
+				<input type="text" class="shbmMc_inp" id="shbmMc" placeholder="请输入收货部门"/>
+				<span class="wzlxMc_span">物资类型：</span>
+				<input type="text" class="wzlxMc_inp" id="wzlxMc" placeholder="请输入物资类型"/>
+				<span class="wzMc_span">物资名称：</span>
+				<input type="text" class="wzMc_inp" id="wzMc" placeholder="请输入物资名称"/>
+				<a class="search_but" id="search_but">查询</a>
+			</div>
 		</div>
 		<table id="tab1">
 		</table>

@@ -94,6 +94,21 @@
 		<if test="lx!=''&amp;lx!=null">
 			and cl.lx=#{lx}
 		</if> 
+		<if test="yssMc!=''&amp;yssMc!=null">
+			and yss.mc like CONCAT('%',#{yssMc},'%')
+		</if>
+		<if test="fhdwMc!=''&amp;fhdwMc!=null">
+			and fhdw.mc like CONCAT('%',#{fhdwMc},'%')
+		</if>
+		<if test="shbmMc!=''&amp;shbmMc!=null">
+			and shbm.mc like CONCAT('%',#{shbmMc},'%')
+		</if>
+		<if test="wzlxMc!=''&amp;wzlxMc!=null">
+			and wzlx.mc like CONCAT('%',#{wzlxMc},'%')
+		</if>
+		<if test="wzMc!=''&amp;wzMc!=null">
+			and wz.mc like CONCAT('%',#{wzMc},'%')
+		</if>
 	</select>
 	<select id="queryList" resultType="com.znczLfylJhb.entity.CheLiang">
 		select cl.*,wzlx.mc wzlxMc,wz.mc wzMc,yss.mc yssMc,fhdw.mc fhdwMc,shbm.mc shbmMc from che_liang cl left join yun_shu_shang yss on cl.yssId=yss.id
@@ -105,6 +120,21 @@
 		<if test="lx!=''&amp;lx!=null">
 			and cl.lx=#{lx}
 		</if> 
+		<if test="yssMc!=''&amp;yssMc!=null">
+			and yss.mc like CONCAT('%',#{yssMc},'%')
+		</if>
+		<if test="fhdwMc!=''&amp;fhdwMc!=null">
+			and fhdw.mc like CONCAT('%',#{fhdwMc},'%')
+		</if>
+		<if test="shbmMc!=''&amp;shbmMc!=null">
+			and shbm.mc like CONCAT('%',#{shbmMc},'%')
+		</if>
+		<if test="wzlxMc!=''&amp;wzlxMc!=null">
+			and wzlx.mc like CONCAT('%',#{wzlxMc},'%')
+		</if>
+		<if test="wzMc!=''&amp;wzMc!=null">
+			and wz.mc like CONCAT('%',#{wzMc},'%')
+		</if>
 		limit #{rowNum},#{rows}
 	</select>
 	<update id="updateWcddcsByCph">

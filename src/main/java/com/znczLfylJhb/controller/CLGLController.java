@@ -36,6 +36,11 @@ public class CLGLController {
 		return MODULE_NAME+"/mscl/list";
 	}
 	
+	/**
+	 * 跳转到车辆管理-待识别车辆-编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/dsbcl/edit")
 	public String goDsbclEdit(HttpServletRequest request) {
 		
@@ -59,6 +64,22 @@ public class CLGLController {
 		request.setAttribute("lx", CheLiang.DAI_SHI_BIE_CHE_LIANG);
 		
 		return MODULE_NAME+"/dsbcl/list";
+	}
+	
+	/**
+	 * 跳转到车辆管理-已识别车辆-编辑页面
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/ysbcl/edit")
+	public String goYsbclEdit(HttpServletRequest request) {
+		
+		//publicService.selectNav(request);
+		String id = request.getParameter("id");
+		CheLiang cl=cheLiangService.selectById(id);
+		request.setAttribute("cl", cl);
+		
+		return MODULE_NAME+"/ysbcl/edit";
 	}
 	
 	/**
@@ -108,12 +129,13 @@ public class CLGLController {
 
 	@RequestMapping(value="/queryZHCXList")
 	@ResponseBody
-	public Map<String, Object> queryZHCXList(Integer lx,String cph,int page,int rows,String sort,String order) {
+	public Map<String, Object> queryZHCXList(String cph,Integer lx,String yssMc, String fhdwMc,
+			String shbmMc, String wzlxMc, String wzMc, int page,int rows,String sort,String order) {
 		
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
-		int count = cheLiangService.queryForInt(lx, cph);
-		List<CheLiang> clList=cheLiangService.queryList(lx, cph, page, rows, sort, order);
+		int count = cheLiangService.queryForInt(cph, lx, yssMc, fhdwMc, shbmMc, wzlxMc, wzMc);
+		List<CheLiang> clList=cheLiangService.queryList(cph, lx, yssMc, fhdwMc, shbmMc, wzlxMc, wzMc, page, rows, sort, order);
 		
 		jsonMap.put("total", count);
 		jsonMap.put("rows", clList);
