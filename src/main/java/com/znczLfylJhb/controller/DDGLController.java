@@ -33,6 +33,11 @@ public class DDGLController {
 	private RglrCphJiLuService rglrCphJiLuService;
 	public static final String MODULE_NAME="ddgl";
 	
+	/**
+	 * 跳转到订单管理-订单状态-添加页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/ddzt/new")
 	public String goDdztNew(HttpServletRequest request) {
 		
@@ -41,6 +46,11 @@ public class DDGLController {
 		return MODULE_NAME+"/ddzt/new";
 	}
 	
+	/**
+	 * 跳转到订单管理-订单状态-编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/ddzt/edit")
 	public String goDdztEdit(HttpServletRequest request) {
 		
@@ -65,6 +75,11 @@ public class DDGLController {
 		return MODULE_NAME+"/ddzt/list";
 	}
 	
+	/**
+	 * 跳转到订单管理-订单状态-详情页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/ddzt/detail")
 	public String goDdztDetail(HttpServletRequest request) {
 		
@@ -89,6 +104,11 @@ public class DDGLController {
 		return MODULE_NAME+"/zhcx/list";
 	}
 	
+	/**
+	 * 跳转到订单管理-综合查询-详情页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/zhcx/detail")
 	public String goZhcxDetail(HttpServletRequest request) {
 		
@@ -100,6 +120,11 @@ public class DDGLController {
 		return MODULE_NAME+"/zhcx/detail";
 	}
 	
+	/**
+	 * 添加订单状态
+	 * @param ddzt
+	 * @return
+	 */
 	@RequestMapping(value="/newDingDanZhuangTai")
 	@ResponseBody
 	public Map<String, Object> newDingDanZhuangTai(DingDanZhuangTai ddzt) {
@@ -118,6 +143,11 @@ public class DDGLController {
 		return jsonMap;
 	}
 	
+	/**
+	 * 编辑订单状态
+	 * @param ddzt
+	 * @return
+	 */
 	@RequestMapping(value="/editDingDanZhuangTai")
 	@ResponseBody
 	public Map<String, Object> editDingDanZhuangTai(DingDanZhuangTai ddzt) {
@@ -136,6 +166,15 @@ public class DDGLController {
 		return jsonMap;
 	}
 	
+	/**
+	 * 查询订单状态列表
+	 * @param mc
+	 * @param page
+	 * @param rows
+	 * @param sort
+	 * @param order
+	 * @return
+	 */
 	@RequestMapping(value="/queryDDZTList")
 	@ResponseBody
 	public Map<String, Object> queryDDZTList(String mc,int page,int rows,String sort,String order) {
@@ -156,6 +195,11 @@ public class DDGLController {
 		return jsonMap;
 	}
 
+	/**
+	 * 删除订单
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping(value="/deleteDingDan",produces="plain/text; charset=UTF-8")
 	@ResponseBody
 	public String deleteDingDan(String ids) {
@@ -176,6 +220,22 @@ public class DDGLController {
 		return json;
 	}
 	
+	/**
+	 * 订单综合查询
+	 * @param ddh
+	 * @param ddztId
+	 * @param ddztMc
+	 * @param cph
+	 * @param yssMc
+	 * @param wzMc
+	 * @param fhdwMc
+	 * @param shbmMc
+	 * @param page
+	 * @param rows
+	 * @param sort
+	 * @param order
+	 * @return
+	 */
 	@RequestMapping(value="/queryZHCXList")
 	@ResponseBody
 	public Map<String, Object> queryZHCXList(String ddh,Integer ddztId,String ddztMc,String cph,String yssMc,String wzMc,
@@ -197,6 +257,10 @@ public class DDGLController {
 		return jsonMap;
 	}
 	
+	/**
+	 * 查询订单状态下拉列表信息
+	 * @return
+	 */
 	@RequestMapping(value="/queryDingDanZhuangTaiCBBList")
 	@ResponseBody
 	public Map<String, Object> queryDingDanZhuangTaiCBBList() {
@@ -210,6 +274,14 @@ public class DDGLController {
 		return jsonMap;
 	}
 	
+	/**
+	 * 查询选择车牌号下拉框信息
+	 * @param page
+	 * @param rows
+	 * @param sort
+	 * @param order
+	 * @return
+	 */
 	@RequestMapping(value="/queryXzCphCBBList")
 	@ResponseBody
 	public Map<String, Object> queryXzCphCBBList(int page,int rows,String sort,String order) {
@@ -223,6 +295,15 @@ public class DDGLController {
 		return jsonMap;
 	}
 	
+	/**
+	 * 查询录入省简称下拉列表信息
+	 * @param q
+	 * @param page
+	 * @param rows
+	 * @param sort
+	 * @param order
+	 * @return
+	 */
 	@RequestMapping(value="/queryLrSjcCBBList")
 	@ResponseBody
 	public List<RglrCphJiLu> queryLrSjcCBBList(String q,int page,int rows,String sort,String order) {
@@ -232,6 +313,16 @@ public class DDGLController {
 		return sjcList;
 	}
 	
+	/**
+	 * 查询录入完成车牌号下拉列表信息
+	 * @param sjc
+	 * @param q
+	 * @param page
+	 * @param rows
+	 * @param sort
+	 * @param order
+	 * @return
+	 */
 	@RequestMapping(value="/queryLrWscphCBBList")
 	@ResponseBody
 	public List<RglrCphJiLu> queryLrWscphCBBList(String sjc,String q,int page,int rows,String sort,String order) {

@@ -44,6 +44,7 @@ var clglPath=path+'clgl/';
 var lx='${requestScope.lx}';
 $(function(){
 	initSearchLB();
+	initAddLB();
 	initTab1();
 });
 
@@ -58,6 +59,15 @@ function initSearchLB(){
 			var wzlxMc=$("#toolbar #wzlxMc").val();
 			var wzMc=$("#toolbar #wzMc").val();
 			tab1.datagrid("load",{cph:cph,lx:lx,yssMc:yssMc,fhdwMc:fhdwMc,shbmMc:shbmMc,wzlxMc:wzlxMc,wzMc:wzMc});
+		}
+	});
+}
+
+function initAddLB(){
+	$("#add_but").linkbutton({
+		iconCls:"icon-add",
+		onClick:function(){
+			location.href=clglPath+"ysbcl/new";
 		}
 	});
 }
@@ -127,6 +137,7 @@ function setFitWidthInParent(o){
 				<span class="wzMc_span">物资名称：</span>
 				<input type="text" class="wzMc_inp" id="wzMc" placeholder="请输入物资名称"/>
 				<a class="search_but" id="search_but">查询</a>
+				<a id="add_but">添加</a>
 			</div>
 		</div>
 		<table id="tab1">

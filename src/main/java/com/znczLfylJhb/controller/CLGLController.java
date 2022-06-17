@@ -65,6 +65,14 @@ public class CLGLController {
 		
 		return MODULE_NAME+"/dsbcl/list";
 	}
+
+	@RequestMapping(value="/ysbcl/new")
+	public String goYsbclNew(HttpServletRequest request) {
+		
+		//publicService.selectNav(request);
+		
+		return MODULE_NAME+"/ysbcl/new";
+	}
 	
 	/**
 	 * 跳转到车辆管理-已识别车辆-编辑页面
@@ -109,6 +117,11 @@ public class CLGLController {
 		return MODULE_NAME+"/zhcx/list";
 	}
 
+	/**
+	 * 编辑车辆信息
+	 * @param cl
+	 * @return
+	 */
 	@RequestMapping(value="/editCheLiang")
 	@ResponseBody
 	public Map<String, Object> editCheLiang(CheLiang cl) {
@@ -127,6 +140,21 @@ public class CLGLController {
 		return jsonMap;
 	}
 
+	/**
+	 * 车辆综合查询
+	 * @param cph
+	 * @param lx
+	 * @param yssMc
+	 * @param fhdwMc
+	 * @param shbmMc
+	 * @param wzlxMc
+	 * @param wzMc
+	 * @param page
+	 * @param rows
+	 * @param sort
+	 * @param order
+	 * @return
+	 */
 	@RequestMapping(value="/queryZHCXList")
 	@ResponseBody
 	public Map<String, Object> queryZHCXList(String cph,Integer lx,String yssMc, String fhdwMc,
