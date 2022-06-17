@@ -356,14 +356,14 @@ public class GKJController {
 
 	@RequestMapping(value="/sendCphToClient")
 	@ResponseBody
-	public Map<String, Object> sendCphToClient(Integer ddId,String cph,Integer bfNoFlag,Integer jyFlag) {
+	public Map<String, Object> sendCphToClient(String cph,Integer bfNoFlag) {
 		
 		System.out.println("sendCphToClient.bfNoFlag==="+bfNoFlag);
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
 		//ProxySet.sayToClient("³A9031", SocketProxy.YI_JIAN);
-		String mesJO="{\"action\":\"pushCph\",jyFlag:"+jyFlag+",\"cph\":\" "+cph+"\"}";
+		String mesJO="{\"action\":\"pushCph\",\"cph\":\" "+cph+"\"}";
 		ProxySet.sayToClient(mesJO, bfNoFlag==1?SocketProxy.YI_HAO_BANG_FANG:SocketProxy.ER_HAO_BANG_FANG);
 		
 		jsonMap.put("status", "ok");

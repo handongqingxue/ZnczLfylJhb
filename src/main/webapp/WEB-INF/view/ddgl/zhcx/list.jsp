@@ -260,31 +260,12 @@ function checkCphToClient(){
 }
 
 function sendCphToClient(){
-	var rows=tab1.datagrid("getSelections");
 	var bfNoFlag=bfhCBB.combobox("getValue");
-	var jyFlag=0;
 	var sjc=lrSjcCBB.combobox("getValue");
 	var wscph=lrWscphCBB.combobox("getValue");
 	var cph=sjc+wscph;
-	if(cph!=rows[0].cph){
-		alert("输入的车牌号与订单里的车牌号不一致");
-		return false;
-	}
-	var ddztMc=rows[0].ddztMc;
-	/*
-	*
-	if(ddztMc=='${requestScope.yjpdzDdztMc}')
-		jyFlag=1
-	else if(ddztMc=='${requestScope.ejpdzDdztMc}')
-		jyFlag=2
-	else{
-		alert("该车辆非排队中状态");
-		return false;
-	}
-	*/
-	var ddId=rows[0].id;
 	$.post(gkjPath+"sendCphToClient",
-		{ddId:ddId,cph:cph,bfNoFlag:bfNoFlag,jyFlag:jyFlag},
+		{cph:cph,bfNoFlag:bfNoFlag},
 		function(data){
 			if(data.status=="ok"){
 				openInputCphDialog(false);
@@ -356,11 +337,6 @@ function initManualLB(){
 	manualLB=$("#manual_but").linkbutton({
 		iconCls:"icon-save",
 		onClick:function(){
-			var rows=tab1.datagrid("getSelections");
-			if (rows.length == 0) {
-				$.messager.alert("提示","请选择要录入车牌号的信息！","warning");
-				return false;
-			}
 			openInputCphDialog(true);
 		}
 	});
