@@ -86,8 +86,7 @@ public class DingDanServiceImpl implements DingDanService {
 	@Override
 	public DingDan getDingDan(String cph, String ddztMc) {
 		// TODO Auto-generated method stub
-		int ddztId=dingDanZhuangTaiDao.getIdByMc(ddztMc);
-		DingDan dd = dingDanDao.getByZtCph(ddztId,cph);
+		DingDan dd = dingDanDao.getByZtMcCph(ddztMc,cph);
 		return dd;
 	}
 
@@ -95,6 +94,12 @@ public class DingDanServiceImpl implements DingDanService {
 	public DingDan getByZt(Integer yjbfh,Integer ejbfh,String ddztMc, Integer yjzt, Integer ejzt) {
 		// TODO Auto-generated method stub
 		return dingDanDao.getByZt(yjbfh,ejbfh,ddztMc, yjzt, ejzt);
+	}
+
+	@Override
+	public DingDan getPDZByCph(String cph) {
+		// TODO Auto-generated method stub
+		return dingDanDao.getPDZByCph(cph,DingDanZhuangTai.YI_JIAN_PAI_DUI_ZHONG_TEXT,DingDanZhuangTai.ER_JIAN_PAI_DUI_ZHONG_TEXT);
 	}
 
 	@Override

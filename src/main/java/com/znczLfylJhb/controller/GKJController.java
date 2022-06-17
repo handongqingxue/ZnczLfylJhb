@@ -115,6 +115,28 @@ public class GKJController {
 		
 		return jsonMap;
 	}
+
+	@RequestMapping(value="/getPDZDingDanByCph")
+	@ResponseBody
+	public Map<String, Object> getPDZDingDanByCph(String cph) {
+
+		System.out.println("cph==="+cph);
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		DingDan dd = dingDanService.getPDZByCph(cph);
+		
+		if(dd==null) {
+			jsonMap.put("status", "no");
+			jsonMap.put("message", "没找到相关订单");
+		}
+		else {
+			jsonMap.put("status", "ok");
+			jsonMap.put("dingDan", dd);
+		}
+		
+		return jsonMap;
+	}
 	
 	@RequestMapping(value="/editDingDan")
 	@ResponseBody
@@ -344,15 +366,30 @@ public class GKJController {
 		String mesJO="{\"action\":\"pushCph\",jyFlag:"+jyFlag+",\"cph\":\" "+cph+"\"}";
 		ProxySet.sayToClient(mesJO, bfNoFlag==1?SocketProxy.YI_HAO_BANG_FANG:SocketProxy.ER_HAO_BANG_FANG);
 		
+		jsonMap.put("status", "ok");
+		
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addRglrCphJiLu")
+	@ResponseBody
+	public Map<String, Object> addRglrCphJiLu(String cph,Integer ddId) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		int count=0;
 		boolean exist=rglrCphJiLuService.checkIfExistByDdIdCph(ddId,cph);//验证同一个订单是否存在该车牌号，存在则说明之前录入过了，不需要再生成车牌号记录了，反之则需要生成
 		if(!exist) {
 			RglrCphJiLu rglrCphJiLu=new RglrCphJiLu();
 			rglrCphJiLu.setCph(cph);
 			rglrCphJiLu.setDdId(ddId);
-			rglrCphJiLuService.add(rglrCphJiLu);
+			count=rglrCphJiLuService.add(rglrCphJiLu);
 		}
-		
-		jsonMap.put("status", "ok");
+
+		if(count>0)
+			jsonMap.put("status", "ok");
+		else
+			jsonMap.put("status", "no");
 		
 		return jsonMap;
 	}

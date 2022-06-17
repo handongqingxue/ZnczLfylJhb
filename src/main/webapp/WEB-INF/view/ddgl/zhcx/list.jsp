@@ -271,6 +271,8 @@ function sendCphToClient(){
 		return false;
 	}
 	var ddztMc=rows[0].ddztMc;
+	/*
+	*
 	if(ddztMc=='${requestScope.yjpdzDdztMc}')
 		jyFlag=1
 	else if(ddztMc=='${requestScope.ejpdzDdztMc}')
@@ -279,6 +281,7 @@ function sendCphToClient(){
 		alert("该车辆非排队中状态");
 		return false;
 	}
+	*/
 	var ddId=rows[0].id;
 	$.post(gkjPath+"sendCphToClient",
 		{ddId:ddId,cph:cph,bfNoFlag:bfNoFlag,jyFlag:jyFlag},

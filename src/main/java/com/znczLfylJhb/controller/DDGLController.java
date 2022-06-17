@@ -144,6 +144,26 @@ public class DDGLController {
 		
 		return jsonMap;
 	}
+
+	@RequestMapping(value="/deleteDingDan",produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String deleteDingDan(String ids) {
+		//TODO 针对分类的动态进行实时调整更新
+		int count=dingDanService.deleteByIds(ids);
+		PlanResult plan=new PlanResult();
+		String json;
+		if(count==0) {
+			plan.setStatus(0);
+			plan.setMsg("删除订单失败");
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		else {
+			plan.setStatus(1);
+			plan.setMsg("删除订单成功");
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		return json;
+	}
 	
 	@RequestMapping(value="/queryZHCXList")
 	@ResponseBody

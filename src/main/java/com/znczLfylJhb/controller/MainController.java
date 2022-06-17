@@ -16,16 +16,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczLfylJhb.util.*;
+import com.znczLfylJhb.socket.*;
 import com.znczLfylJhb.entity.*;
 
 import com.znczLfylJhb.service.*;
-//import com.znczLfylJhb.socket.ProxySet;
 
 @Controller
 @RequestMapping("/main")
 public class MainController {
 	@Autowired
 	private YongHuService yongHuService;
+
+	static {
+		StartServer ss=new StartServer();
+		ss.start();
+	}
 
 	/**
 	 * 跳转到登录页
@@ -98,8 +103,7 @@ public class MainController {
 		
 		plan.setStatus(0);
 		plan.setMsg("验证通过");
-		//plan.setUrl("/ddgl/zhcx/list");
-		plan.setUrl("/ddgl/ddzt/list");
+		plan.setUrl("/ddgl/zhcx/list");
 		return JsonUtil.getJsonFromObject(plan);
 	}
 

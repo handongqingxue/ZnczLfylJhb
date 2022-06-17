@@ -169,8 +169,8 @@
 			and ejzt=#{ejzt}
 		</if>
 	</update>
-	<select id="getByZtCph" resultType="com.znczLfylJhb.entity.DingDan">
-		select dd.* from ding_dan dd,che_liang cl where dd.clId=cl.id and dd.ddztId=#{ddztId} and cl.cph=#{cph}
+	<select id="getByZtMcCph" resultType="com.znczLfylJhb.entity.DingDan">
+		select dd.* from ding_dan dd,ding_dan_zhuang_tai ddzt,che_liang cl where dd.ddztId=ddzt.id and dd.clId=cl.id and ddzt.mc=#{ddztMc} and cl.cph=#{cph}
 	</select>
 	<select id="getByZt" resultType="com.znczLfylJhb.entity.DingDan">
 		select dd.* from ding_dan dd,ding_dan_zhuang_tai ddzt where dd.ddztId=ddzt.id and ddzt.mc=#{ddztMc}
@@ -186,6 +186,9 @@
 		<if test="ejzt!=0">
 		 and dd.ejzt=#{ejzt}
 		</if>
+	</select>
+	<select id="getPDZByCph" resultType="com.znczLfylJhb.entity.DingDan">
+		select dd.*,ddzt.mc ddztMc from ding_dan dd,ding_dan_zhuang_tai ddzt,che_liang cl where dd.ddztId=ddzt.id and dd.clId=cl.id and (ddzt.mc=#{ztMc1} or ddzt.mc=#{ztMc2}) and cl.cph=#{cph}
 	</select>
 	<update id="checkByIds">
 		update ding_dan set ddztId=#{ddztId} where 1=1

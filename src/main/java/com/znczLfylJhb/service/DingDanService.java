@@ -26,6 +26,8 @@ public interface DingDanService {
 
 	DingDan getByZt(Integer yjbfh, Integer ejbfh, String ddztMc, Integer yjzt, Integer ejzt);
 
+	DingDan getPDZByCph(String cph);
+
 	boolean checkDdhIfExist(String ddh);
 
 	boolean checkIfExistByZt(Integer yjbfh,Integer ejbfh,String ddztMc, Integer yjzt, Integer ejzt);
