@@ -89,6 +89,17 @@ public class DDGLController {
 		return MODULE_NAME+"/zhcx/list";
 	}
 	
+	@RequestMapping(value="/zhcx/detail")
+	public String goZhcxDetail(HttpServletRequest request) {
+		
+		//publicService.selectNav(request);
+		String id = request.getParameter("id");
+		DingDan dd=dingDanService.selectById(id);
+		request.setAttribute("dd", dd);
+		
+		return MODULE_NAME+"/zhcx/detail";
+	}
+	
 	@RequestMapping(value="/newDingDanZhuangTai")
 	@ResponseBody
 	public Map<String, Object> newDingDanZhuangTai(DingDanZhuangTai ddzt) {

@@ -116,6 +116,18 @@ public class DingDan {
 	public void setClId(Integer clId) {
 		this.clId = clId;
 	}
+	public Integer getClLx() {
+		return clLx;
+	}
+	public void setClLx(Integer clLx) {
+		this.clLx = clLx;
+	}
+	public Integer getClWcddcs() {
+		return clWcddcs;
+	}
+	public void setClWxddcs(Integer clWcddcs) {
+		this.clWcddcs = clWcddcs;
+	}
 	public String getCph() {
 		return cph;
 	}
@@ -201,6 +213,8 @@ public class DingDan {
 	private Integer ejbfh=0;//二检磅房号
 	private Integer lxlx;//流向类型
 	private Integer clId;
+	private Integer clLx;//车辆类型 1.陌生车辆 2.待识别车辆 3.已识别车辆
+	private Integer clWcddcs;
 	private String cph;
 	private Integer wzlxId;
 	private String wzlxMc;

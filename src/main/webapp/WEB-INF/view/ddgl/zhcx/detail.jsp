@@ -48,14 +48,9 @@ function initDetailDialog(){
 	$("#detail_div").dialog({
 		title:"订单信息",
 		width:setFitWidthInParent("body","detail_div"),
-		height:325,
+		height:290,
 		top:dialogTop,
-		left:dialogLeft,
-		buttons:[
-           {text:"审核通过",id:"shtg_but",iconCls:"icon-ok",handler:function(){
-        	   checkById();
-           }}
-        ]
+		left:dialogLeft
 	});
 
 	$("#detail_div table").css("width",(setFitWidthInParent("body","detail_div_table"))+"px");
@@ -80,44 +75,6 @@ function initDetailDialog(){
 	//以下的是表格下面的面板
 	$(".window-shadow").eq(ddNum).css("margin-top","20px");
 	$(".window,.window .window-body").eq(ddNum).css("border-color","#ddd");
-
-	var shtgBut=$("#detail_div #shtg_but");
-	shtgBut.css("left","45%");
-	shtgBut.css("position","absolute");
-	
-	if('${requestScope.dd.ddztId }'==1)
-		shtgBut.linkbutton('enable');
-	else
-		shtgBut.linkbutton('disable');
-	
-	$(".dialog-button").css("background-color","#fff");
-	$(".dialog-button .l-btn-text").css("font-size","20px");
-}
-
-function checkById(){
-	var id=$("#detail_div #id").val();
-	var ddztMc;
-	var sjsfzh='${requestScope.dd.sjsfzh }';
-	var sjxm='${requestScope.dd.sjxm }';
-	var cph='${requestScope.dd.cph }';
-	if(sjsfzh==""||sjxm==""||cph=="")//在司机身份证号、司机姓名、车牌号的一者为空情况下，就算审核通过，订单状态也是已审核
-		ddztMc=$("#detail_div #yshDdztMc").val();
-	else//在司机身份证号、司机姓名、车牌号三者都不为空情况下，审核通过，订单状态直接跳到一检排队中
-		ddztMc=$("#detail_div #yjpdzDdztMc").val();
-	var shlx='${requestScope.shlx}';
-	var shrId='${sessionScope.yongHu.id}';
-	$.post(ddglPath + "checkDingDanByIds",
-		{ids:id,ddztMc:ddztMc,shlx:shlx,shjg:true,shrId:shrId},
-		function(result){
-			if(result.status==1){
-				alert(result.msg);
-				history.go(-1);
-			}
-			else{
-				alert(result.msg);
-			}
-		}
-	,"json");
 }
 
 function setFitWidthInParent(parent,self){
@@ -148,8 +105,6 @@ function setFitWidthInParent(parent,self){
 		<div id="detail_div">
 			<form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">
 			<input type="hidden" id="id" value="${requestScope.dd.id }"/>
-			<input type="hidden" id="yshDdztMc" value="${requestScope.yshDdztMc}"/>
-			<input type="hidden" id="yjpdzDdztMc" value="${requestScope.yjpdzDdztMc}"/>
 			<table>
 			  <tr>
 				<td class="td1" align="right">
@@ -159,24 +114,27 @@ function setFitWidthInParent(parent,self){
 					${requestScope.dd.ddh }
 				</td>
 				<td class="td1" align="right">
-					司机身份证号
-				</td>
-				<td class="td2">
-					${requestScope.dd.sjsfzh }
-				</td>
-			  </tr>
-			  <tr>
-				<td class="td1" align="right">
-					司机姓名
-				</td>
-				<td class="td2">
-					${requestScope.dd.sjxm }
-				</td>
-				<td class="td1" align="right">
 					车牌号
 				</td>
 				<td class="td2">
 					${requestScope.dd.cph }
+				</td>
+			  </tr>
+			  <tr>
+				<td class="td1" align="right">
+					车辆类型
+				</td>
+				<td class="td2">
+					<c:if test="${requestScope.dd.clLx eq 1 }">陌生</c:if>
+					<c:if test="${requestScope.dd.clLx eq 2 }">待识别</c:if>
+					<c:if test="${requestScope.dd.clLx eq 3 }">已识别</c:if>
+					车辆
+				</td>
+				<td class="td1" align="right">
+					完成订单次数
+				</td>
+				<td class="td2">
+					${requestScope.dd.clWcddcs }
 				</td>
 			  </tr>
 			  <tr>

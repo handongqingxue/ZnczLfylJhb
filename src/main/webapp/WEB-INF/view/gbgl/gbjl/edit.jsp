@@ -95,27 +95,7 @@ function initEditDialog(){
 	$(".dialog-button").css("background-color","#fff");
 	$(".dialog-button .l-btn-text").css("font-size","20px");
 	
-	initGBZTCBB();
 	initGBLXCBB();
-}
-
-function initGBZTCBB(){
-	var data=[];
-	data.push({"value":"","text":"请选择过磅状态"});
-	data.push({"value":"1","text":"正常"});
-	data.push({"value":"2","text":"异常"});
-	
-	gbztCBB=$("#gbzt_cbb").combobox({
-		valueField:"value",
-		textField:"text",
-		data:data,
-		onLoadSuccess:function(){
-			$(this).combobox("setValue",'${requestScope.gbjl.gbzt }');
-		},
-		onSelect:function(){
-			$("#gbzt").val($(this).combobox("getValue"));
-		}
-	});
 }
 
 function initGBLXCBB(){
@@ -252,18 +232,15 @@ function setFitWidthInParent(parent,self){
 			  </tr>
 			  <tr>
 				<td class="td1" align="right">
-					过磅状态
-				</td>
-				<td class="td2">
-					<input id="gbzt_cbb"/>
-					<input type="hidden" id="gbzt" name="gbzt" value="${requestScope.gbjl.gbzt }"/>
-				</td>
-				<td class="td1" align="right">
 					过磅类型
 				</td>
 				<td class="td2">
 					<input id="gblx_cbb"/>
 					<input type="hidden" id="gblx" name="gblx" value="${requestScope.gbjl.gblx }"/>
+				</td>
+				<td class="td1" align="right">
+				</td>
+				<td class="td2">
 				</td>
 			  </tr>
 			</table>

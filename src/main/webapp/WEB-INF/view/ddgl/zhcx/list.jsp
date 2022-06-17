@@ -85,7 +85,6 @@ $(function(){
 function showCompontByQx(){
 	manualLB.hide();
 	removeLB.hide();
-	//alert(yhm)
 	if(yhm=="admin"){
 		manualLB.show();
 		removeLB.show();
@@ -93,14 +92,12 @@ function showCompontByQx(){
 	else{
 		var qxIdsArr=qxIds.split(",");
 		for(var i=0;i<qxIdsArr.length;i++){
-			if(qxIdsArr[i]==1){//门卫
-			}
-			if(qxIdsArr[i]==2){//业务员
+			if(qxIdsArr[i]==1){//仓储员
 				setTimeout(function(){
 					$(".tab1_div .check_a").css("visibility","visible");
 				},2000)
 			}
-			if(qxIdsArr[i]==3){//磅房人员
+			if(qxIdsArr[i]==2){//磅房人员
 				manualLB.show();
 			}
 		}

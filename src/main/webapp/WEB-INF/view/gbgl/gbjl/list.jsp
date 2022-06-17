@@ -86,9 +86,6 @@ function initTab1(){
 			{field:"ddh",title:"订单号",width:150},
 			{field:"cph",title:"车牌号",width:150},
 			{field:"gbzl",title:"过磅重量",width:200},
-			{field:"gbzt",title:"过磅状态",width:100,formatter:function(value,row){
-				return value==1?"正常":"异常";
-			}},
             {field:"gblx",title:"过磅类型",width:100,formatter:function(value,row){
             	var str;
             	switch (value) {
@@ -111,7 +108,7 @@ function initTab1(){
         onLoadSuccess:function(data){
 			if(data.total==0){
 				$(this).datagrid("appendRow",{ddh:"<div style=\"text-align:center;\">暂无信息<div>"});
-				$(this).datagrid("mergeCells",{index:0,field:"ddh",colspan:7});
+				$(this).datagrid("mergeCells",{index:0,field:"ddh",colspan:6});
 				data.total=0;
 			}
 			

@@ -125,21 +125,16 @@ function setFitWidthInParent(parent,self){
 			  </tr>
 			  <tr>
 				<td class="td1" align="right">
-					过磅状态
-				</td>
-				<td class="td2">
-					<c:choose>
-						<c:when test="${requestScope.gbjl.gbzt eq 1 }">正常</c:when>
-						<c:otherwise>异常</c:otherwise>
-					</c:choose>
-				</td>
-				<td class="td1" align="right">
 					过磅类型
 				</td>
 				<td class="td2">
 					<c:if test="${requestScope.gbjl.gblx eq 1 }">入厂</c:if>
 					<c:if test="${requestScope.gbjl.gblx eq 2 }">出厂</c:if>
 					过磅
+				</td>
+				<td class="td1" align="right">
+				</td>
+				<td class="td2">
 				</td>
 			  </tr>
 			</table>
