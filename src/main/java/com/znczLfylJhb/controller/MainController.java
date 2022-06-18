@@ -113,6 +113,7 @@ public class MainController {
 	}
 	
 	public static void main(String[] args) throws SocketException {
+		//http://www.fyepb.cn/news/paotui/176249.html
 		//https://blog.csdn.net/qq_43080741/article/details/124237926
         StringBuilder sb = new StringBuilder();
         Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
