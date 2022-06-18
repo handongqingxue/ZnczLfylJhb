@@ -1,19 +1,16 @@
 package com.znczLfylJhb.controller;
 
-import java.util.List;
+import java.net.*;
+import java.util.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.znczLfylJhb.util.*;
 import com.znczLfylJhb.socket.*;
@@ -114,4 +111,25 @@ public class MainController {
 	    currentUser.logout();    
 		return "login";
 	}
+	
+	public static void main(String[] args) throws SocketException {
+		//https://blog.csdn.net/qq_43080741/article/details/124237926
+        StringBuilder sb = new StringBuilder();
+        Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+        byte[] mac = null;
+        while (allNetInterfaces.hasMoreElements()) {
+            NetworkInterface netInterface = allNetInterfaces.nextElement();
+            if (netInterface.isLoopback() || netInterface.isVirtual() || netInterface.isPointToPoint() || !netInterface.isUp()) {
+                continue;
+            } else {
+                mac = netInterface.getHardwareAddress();
+                if (mac != null) {
+                    for (int i = 0; i < mac.length; i++) {
+                        sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : "\n"));
+                    }
+                }
+            }
+        }
+        System.out.println(sb.toString());
+    }
 }
