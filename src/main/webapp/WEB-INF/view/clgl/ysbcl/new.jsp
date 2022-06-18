@@ -19,14 +19,16 @@
 	margin-left: 20px;
 	font-size: 18px;
 }
-.mc_inp,.px_inp{
+.cph_inp{
 	width: 150px;
 	height:30px;
 }
 </style>
 <script type="text/javascript">
 var path='<%=basePath %>';
+var clglPath=path+'clgl/';
 var wzglPath=path+'wzgl/';
+var dwglPath=path+'dwgl/';
 var dialogTop=70;
 var dialogLeft=20;
 var ndNum=0;
@@ -52,7 +54,7 @@ function initNewDialog(){
 	$("#new_div").dialog({
 		title:"已识别车辆信息",
 		width:setFitWidthInParent("body","new_div"),
-		height:231,
+		height:235,
 		top:dialogTop,
 		left:dialogLeft,
 		buttons:[
@@ -70,8 +72,9 @@ function initNewDialog(){
 	$("#new_div table .td1").css("width","15%");
 	$("#new_div table .td2").css("width","30%");
 	$("#new_div table tr").css("border-bottom","#CAD9EA solid 1px");
-	$("#new_div table tr").eq(0).css("height","45px");
-	$("#new_div table tr").eq(1).css("height","90px");
+	$("#new_div table tr").each(function(i){
+		$(this).css("height","45px");
+	});
 
 	$(".panel.window").eq(ndNum).css("margin-top","20px");
 	$(".panel.window .panel-title").eq(ndNum).css("color","#000");
@@ -89,19 +92,147 @@ function initNewDialog(){
 	
 	$(".dialog-button").css("background-color","#fff");
 	$(".dialog-button .l-btn-text").css("font-size","20px");
+	
+	initWZLXCBB();
+	initWZCBB();
+	initYSSCBB();
+	initFHDWCBB();
+	initSHBMCBB();
+}
+
+function initWZLXCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择物资类型"});
+	$.post(wzglPath+"queryWuZiLeiXingCBBList",
+		function(result){
+			var rows=result.rows;
+			for(var i=0;i<rows.length;i++){
+				data.push({"value":rows[i].id,"text":rows[i].mc});
+			}
+			wzlxCBB=$("#new_div #wzlx_cbb").combobox({
+				valueField:"value",
+				textField:"text",
+				data:data,
+				onSelect:function(){
+					loadWZCBBData();
+				}
+			});
+		}
+	,"json");
+}
+
+function initWZCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择物资名称"});
+	wzCBB=$("#new_div #wz_cbb").combobox({
+		valueField:"value",
+		textField:"text",
+		data:data
+	});
+}
+
+function loadWZCBBData(){
+	var data=[];
+	data.push({"value":"","text":"请选择物资名称"});
+	var wzlxId=wzlxCBB.combobox("getValue");
+	$.post(wzglPath+"queryWuZiCBBList",
+		{wzlxId:wzlxId},
+		function(result){
+			var rows=result.rows;
+			for(var i=0;i<rows.length;i++){
+				data.push({"value":rows[i].id,"text":rows[i].mc});
+			}
+			wzCBB.combobox("loadData",data);
+		}
+	,"json");
+}
+
+function initYSSCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择运输商"});
+	$.post(dwglPath+"queryYunShuShangCBBList",
+		function(result){
+			var rows=result.rows;
+			for(var i=0;i<rows.length;i++){
+				data.push({"value":rows[i].id,"text":rows[i].mc});
+			}
+			yssCBB=$("#new_div #yss_cbb").combobox({
+				valueField:"value",
+				textField:"text",
+				data:data
+			});
+		}
+	,"json");
+}
+
+function initFHDWCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择发货单位"});
+	$.post(dwglPath+"queryFaHuoDanWeiCBBList",
+		function(result){
+			var rows=result.rows;
+			for(var i=0;i<rows.length;i++){
+				data.push({"value":rows[i].id,"text":rows[i].mc});
+			}
+			fhdwCBB=$("#new_div #fhdw_cbb").combobox({
+				valueField:"value",
+				textField:"text",
+				data:data
+			});
+		}
+	,"json");
+}
+
+function initSHBMCBB(){
+	var data=[];
+	data.push({"value":"","text":"请选择收货部门"});
+	$.post(dwglPath+"queryShouHuoBuMenCBBList",
+		function(result){
+			var rows=result.rows;
+			for(var i=0;i<rows.length;i++){
+				data.push({"value":rows[i].id,"text":rows[i].mc});
+			}
+			shbmCBB=$("#new_div #shbm_cbb").combobox({
+				valueField:"value",
+				textField:"text",
+				data:data
+			});
+		}
+	,"json");
 }
 
 function checkNew(){
-	if(checkMC()){
-		newWuZiLeiXing();
+	if(checkCph()){
+		if(checkWZLXId()){
+			if(checkWZId()){
+				if(checkYSSId()){
+					if(checkFHDWId()){
+						if(checkSHBMId()){
+							newCheLiang();
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
-function newWuZiLeiXing(){
+function newCheLiang(){
+	var wzlxId=wzlxCBB.combobox("getValue");
+	$("#new_div #wzlxId").val(wzlxId);
+	var wzId=wzCBB.combobox("getValue");
+	$("#new_div #wzId").val(wzId);
+	var yssId=yssCBB.combobox("getValue");
+	$("#new_div #yssId").val(yssId);
+	var fhdwId=fhdwCBB.combobox("getValue");
+	$("#new_div #fhdwId").val(fhdwId);
+	var shbmId=shbmCBB.combobox("getValue");
+	$("#new_div #shbmId").val(shbmId);
+	
 	var formData = new FormData($("#form1")[0]);
 	$.ajax({
 		type:"post",
-		url:wzglPath+"newWuZiLeiXing",
+		url:clglPath+"newCheLiang",
 		dataType: "json",
 		data:formData,
 		cache: false,
@@ -119,21 +250,96 @@ function newWuZiLeiXing(){
 	});
 }
 
-function focusMC(){
-	var mc = $("#mc").val();
-	if(mc=="类名不能为空"){
-		$("#mc").val("");
-		$("#mc").css("color", "#555555");
+function focusCph(){
+	var cph = $("#cph").val();
+	if(cph=="车牌号不能为空"||cph=="车牌号已存在"){
+		$("#cph").val("");
+		$("#cph").css("color", "#555555");
 	}
 }
 
-//验证类名
-function checkMC(){
-	var mc = $("#mc").val();
-	if(mc==null||mc==""||mc=="类名不能为空"){
-		$("#mc").css("color","#E15748");
-    	$("#mc").val("类名不能为空");
-    	return false;
+//验证车牌号
+function checkCph(){
+	var flag=false;
+	var cph = $("#cph").val();
+	if(cph==null||cph==""||cph=="车牌号不能为空"){
+		$("#cph").css("color","#E15748");
+    	$("#cph").val("车牌号不能为空");
+    	flag=false;
+	}
+	else if(cph=="车牌号已存在"){
+		$("#cph").css("color","#E15748");
+    	$("#cph").val("车牌号已存在");
+    	flag=false;
+	}
+	else{
+		$.ajaxSetup({async:false});
+		$.post(clglPath+"checkCphIfExist",
+			{cph:cph},
+			function(data){
+				if(data.status==1)
+			    	flag=true;
+				else{
+					$("#cph").css("color","#E15748");
+			    	$("#cph").val(data.msg);
+			    	flag=false;
+				}
+			}
+		,"json");
+	}
+	return flag;
+}
+
+//验证物资类型
+function checkWZLXId(){
+	var wzlxId=wzlxCBB.combobox("getValue");
+	if(wzlxId==null||wzlxId==""){
+	  	alert("请选择物资类型");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证物资
+function checkWZId(){
+	var wzId=wzCBB.combobox("getValue");
+	if(wzId==null||wzId==""){
+	  	alert("请选择物资");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证运输商
+function checkYSSId(){
+	var yssId=yssCBB.combobox("getValue");
+	if(yssId==null||yssId==""){
+	  	alert("请选择运输商");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证发货单位
+function checkFHDWId(){
+	var fhdwId=fhdwCBB.combobox("getValue");
+	if(fhdwId==null||fhdwId==""){
+	  	alert("请选择发货单位");
+	  	return false;
+	}
+	else
+		return true;
+}
+
+//验证收货部门
+function checkSHBMId(){
+	var shbmId=shbmCBB.combobox("getValue");
+	if(shbmId==null||shbmId==""){
+	  	alert("请选择收货部门");
+	  	return false;
 	}
 	else
 		return true;
@@ -166,31 +372,53 @@ function setFitWidthInParent(parent,self){
 		
 		<div id="new_div">
 			<form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">
+			<input type="hidden" id="lx" name="lx" value="${requestScope.lx}"/>
 			<table>
 			  <tr>
 				<td class="td1" align="right">
-					类名
+					车牌号
 				</td>
 				<td class="td2">
-					<input type="text" class="mc_inp" id="mc" name="mc" placeholder="请输入类名" onfocus="focusMC()" onblur="checkMC()"/>
+					<input type="text" class="cph_inp" id="cph" name="cph" placeholder="请输入车牌号" onfocus="focusCph()" onblur="checkCph()"/>
 				</td>
 				<td class="td1" align="right">
-					排序
+					物资类型
 				</td>
 				<td class="td2">
-					<input type="number" class="px_inp" id="px" name="px"/>
+					<input id="wzlx_cbb"/>
+					<input type="hidden" id="wzlxId" name="wzlxId"/>
 				</td>
 			  </tr>
 			  <tr>
 				<td class="td1" align="right">
-					备注
+					物资名称
 				</td>
 				<td class="td2">
-					<textarea id="bz" name="bz" rows="3" cols="30" placeholder="请输入备注"></textarea>
+					<input id="wz_cbb"/>
+					<input type="hidden" id="wzId" name="wzId"/>
 				</td>
 				<td class="td1" align="right">
+					运输商
 				</td>
 				<td class="td2">
+					<input id="yss_cbb"/>
+					<input type="hidden" id="yssId" name="yssId"/>
+				</td>
+			  </tr>
+			  <tr>
+				<td class="td1" align="right">
+					发货单位
+				</td>
+				<td class="td2">
+					<input id="fhdw_cbb"/>
+					<input type="hidden" id="fhdwId" name="fhdwId"/>
+				</td>
+				<td class="td1" align="right">
+					收货部门
+				</td>
+				<td class="td2">
+					<input id="shbm_cbb"/>
+					<input type="hidden" id="shbmId" name="shbmId"/>
 				</td>
 			  </tr>
 			</table>

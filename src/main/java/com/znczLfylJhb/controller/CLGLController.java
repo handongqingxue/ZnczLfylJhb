@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczLfylJhb.entity.*;
 import com.znczLfylJhb.service.*;
+import com.znczLfylJhb.util.*;
 
 @Controller
 @RequestMapping("/"+CLGLController.MODULE_NAME)
@@ -70,6 +71,7 @@ public class CLGLController {
 	public String goYsbclNew(HttpServletRequest request) {
 		
 		//publicService.selectNav(request);
+		request.setAttribute("lx", CheLiang.YI_SHI_BIE_CHE_LIANG);
 		
 		return MODULE_NAME+"/ysbcl/new";
 	}
@@ -115,6 +117,24 @@ public class CLGLController {
 		//publicService.selectNav(request);
 		
 		return MODULE_NAME+"/zhcx/list";
+	}
+	
+	@RequestMapping(value="/newCheLiang")
+	@ResponseBody
+	public Map<String, Object> newCheLiang(CheLiang cl) {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		int count=cheLiangService.add(cl);
+		if(count>0) {
+			jsonMap.put("message", "ok");
+			jsonMap.put("info", "创建车辆成功！");
+		}
+		else {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "创建车辆失败！");
+		}
+		return jsonMap;
 	}
 
 	/**
@@ -169,5 +189,23 @@ public class CLGLController {
 		jsonMap.put("rows", clList);
 		
 		return jsonMap;
+	}
+
+	@RequestMapping(value="/checkCphIfExist",produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String checkCphIfExist(String cph) {
+		boolean exist=cheLiangService.checkCphIfExist(cph);
+		PlanResult plan=new PlanResult();
+		String json;
+		if(exist) {
+			plan.setStatus(0);
+			plan.setMsg("车牌号已存在");
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		else {
+			plan.setStatus(1);
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		return json;
 	}
 }

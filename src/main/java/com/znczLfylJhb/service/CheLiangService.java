@@ -23,4 +23,6 @@ public interface CheLiangService {
 
 	CheLiang selectById(String id);
 
+	boolean checkCphIfExist(String cph);
+
 }
