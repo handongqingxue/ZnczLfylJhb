@@ -113,4 +113,11 @@ public class GuoBangJiLu {
 	private String yssMc;
 	private String fhdwMc;
 	private String shbmMc;
+	private Integer sjc;
+	public Integer getSjc() {
+		return sjc;
+	}
+	public void setSjc(Integer sjc) {
+		this.sjc = sjc;
+	}
 }

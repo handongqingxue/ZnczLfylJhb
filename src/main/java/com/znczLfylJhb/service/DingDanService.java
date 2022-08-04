@@ -42,4 +42,6 @@ public interface DingDanService {
 
 	String getCphByBfhDdzt(Integer bfh, String ddztMc);
 
+	boolean checkIfCPSB(String cph);
+
 }

@@ -20,6 +20,8 @@ public class DingDanServiceImpl implements DingDanService {
 	private DingDanMapper dingDanDao;
 	@Autowired
 	private DingDanZhuangTaiMapper dingDanZhuangTaiDao;
+	@Autowired
+	private GuoBangJiLuMapper guoBangJiLuDao;
 	private SimpleDateFormat ddhSdf=new SimpleDateFormat("yyyyMMdd");
 
 	@Override
@@ -152,5 +154,20 @@ public class DingDanServiceImpl implements DingDanService {
 	public String getCphByBfhDdzt(Integer bfh, String ddztMc) {
 		// TODO Auto-generated method stub
 		return dingDanDao.getCphByBfhDdzt(bfh, ddztMc);
+	}
+
+	@Override
+	public boolean checkIfCPSB(String cph) {
+		// TODO Auto-generated method stub
+		boolean flag=false;
+		GuoBangJiLu gbjl=guoBangJiLuDao.getLastByCph(cph);
+		if(gbjl==null)
+			flag=true;
+		else if(gbjl.getSjc()>=5) {
+			flag=true;
+		}
+		else
+			flag=false;
+		return flag;
 	}
 }

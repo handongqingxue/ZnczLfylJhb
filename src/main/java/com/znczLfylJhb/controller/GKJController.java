@@ -319,6 +319,23 @@ public class GKJController {
 		return jsonMap;
 	}
 
+
+	@RequestMapping(value="/checkIfCPSB")
+	@ResponseBody
+	public Map<String, Object> checkIfCPSB(String cph) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		boolean bool=dingDanService.checkIfCPSB(cph);
+		if(bool) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
 	@RequestMapping(value="/getCphByBfhDdzt")
 	@ResponseBody
 	public Map<String, Object> getCphByBfhDdzt(Integer bfh, String ddztMc) {

@@ -90,4 +90,7 @@
 	<select id="getCountByDdId" resultType="java.lang.Integer">
 		select count(*) from guo_bang_ji_lu where gblx=#{gblx} and ddId=#{ddId}
 	</select>
+	<select id="getLastByCph" resultType="com.znczLfylJhb.entity.GuoBangJiLu">
+		select gbjl.gbsj,TIMESTAMPDIFF(MINUTE,gbsj,now()) sjc from ding_dan dd,che_liang cl,guo_bang_ji_lu gbjl where dd.clId=cl.id and gbjl.ddId=dd.id and cl.cph=#{cph} order by gbjl.gbsj desc limit 0,1
+	</select>
 </mapper>

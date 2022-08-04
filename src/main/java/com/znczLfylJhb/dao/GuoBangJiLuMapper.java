@@ -25,4 +25,6 @@ public interface GuoBangJiLuMapper {
 	int deleteByDdId(@Param("gblx") Integer gblx, @Param("ddId") Integer ddId);
 
 	int getCountByDdId(@Param("gblx") Integer gblx, @Param("ddId") Integer ddId);
+
+	GuoBangJiLu getLastByCph(@Param("cph") String cph);
 }
