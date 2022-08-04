@@ -99,6 +99,12 @@ public class GuoBangJiLu {
 	public void setShbmMc(String shbmMc) {
 		this.shbmMc = shbmMc;
 	}
+	public Integer getSjc() {
+		return sjc;
+	}
+	public void setSjc(Integer sjc) {
+		this.sjc = sjc;
+	}
 	private Float gbzl;
 	private Integer gbzt;
 	private String gbsj;
@@ -114,10 +120,4 @@ public class GuoBangJiLu {
 	private String fhdwMc;
 	private String shbmMc;
 	private Integer sjc;
-	public Integer getSjc() {
-		return sjc;
-	}
-	public void setSjc(Integer sjc) {
-		this.sjc = sjc;
-	}
 }
