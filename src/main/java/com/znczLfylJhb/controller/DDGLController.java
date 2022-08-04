@@ -266,6 +266,12 @@ public class DDGLController {
 	}
 	
 
+	/**
+	 * 根据订单id复位订单
+	 * @param dd
+	 * @param jyFlag
+	 * @return
+	 */
 	@RequestMapping(value="/fwddById",produces="plain/text; charset=UTF-8")
 	@ResponseBody
 	public String fwddById(DingDan dd,int jyFlag) {
@@ -274,7 +280,7 @@ public class DDGLController {
 		String json;
 		boolean bool=false;
 		int count=dingDanService.edit(dd);
-		if(jyFlag==GuoBangJiLu.RU_CHANG_GUO_BANG) {
+		if(jyFlag==GuoBangJiLu.RU_CHANG_GUO_BANG) {//若是入厂过磅（一检过磅），需要检查有无磅单记录。有的话删除磅单记录，等再次过磅后再生成新的磅单记录。此操作仅在入厂过磅时才执行
 			bool=bangDanJiLuService.checkIfExistByDdId(dd.getId());
 			if(bool)
 				bangDanJiLuService.deleteByDdId(dd.getId());
