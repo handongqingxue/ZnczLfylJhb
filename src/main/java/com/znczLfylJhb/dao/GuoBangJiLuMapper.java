@@ -26,5 +26,10 @@ public interface GuoBangJiLuMapper {
 
 	int getCountByDdId(@Param("gblx") Integer gblx, @Param("ddId") Integer ddId);
 
+	/**
+	 * 根据车牌号获得最后一次过磅记录
+	 * @param cph
+	 * @return
+	 */
 	GuoBangJiLu getLastByCph(@Param("cph") String cph);
 }

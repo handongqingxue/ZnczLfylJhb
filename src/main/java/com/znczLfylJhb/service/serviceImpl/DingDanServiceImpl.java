@@ -163,7 +163,7 @@ public class DingDanServiceImpl implements DingDanService {
 		GuoBangJiLu gbjl=guoBangJiLuDao.getLastByCph(cph);
 		if(gbjl==null)
 			flag=true;
-		else if(gbjl.getSjc()>=5) {
+		else if(gbjl.getSjc()>=GuoBangJiLu.GUO_BANG_JIAN_GE_FEN_ZHONG) {
 			flag=true;
 		}
 		else

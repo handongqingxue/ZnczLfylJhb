@@ -7,6 +7,8 @@ public class GuoBangJiLu {
 	
 	public static final Integer RU_CHANG_GUO_BANG=1;
 	public static final Integer CHU_CHANG_GUO_BANG=2;
+	
+	public static final Integer GUO_BANG_JIAN_GE_FEN_ZHONG=5;
 
 	private Integer id;
 	public Integer getId() {

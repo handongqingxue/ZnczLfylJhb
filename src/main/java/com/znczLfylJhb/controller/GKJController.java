@@ -320,6 +320,11 @@ public class GKJController {
 	}
 
 
+	/**
+	 * 根据车牌号验证车辆是否可以上磅
+	 * @param cph
+	 * @return
+	 */
 	@RequestMapping(value="/checkIfCPSB")
 	@ResponseBody
 	public Map<String, Object> checkIfCPSB(String cph) {
