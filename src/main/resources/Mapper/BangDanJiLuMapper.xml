@@ -58,7 +58,7 @@
 		 left join (select * from guo_bang_ji_lu where gblx=1) gbjl on dd.id=gbjl.ddId 
 		 left join (select * from guo_bang_ji_lu where gblx=2) qygbjl on dd.id=qygbjl.ddId where 1=1
 		<if test="ddh!=''&amp;ddh!=null">
-			and cl.ddh like CONCAT('%',#{ddh},'%')
+			and dd.ddh like CONCAT('%',#{ddh},'%')
 		</if>
 	</select>
 	<select id="queryList" resultType="com.znczLfylJhb.entity.BangDanJiLu">
@@ -67,7 +67,7 @@
 		 left join (select * from guo_bang_ji_lu where gblx=1) sygbjl on dd.id=sygbjl.ddId 
 		 left join (select * from guo_bang_ji_lu where gblx=2) qygbjl on dd.id=qygbjl.ddId where 1=1
 		<if test="ddh!=''&amp;ddh!=null">
-			and cl.ddh like CONCAT('%',#{ddh},'%')
+			and dd.ddh like CONCAT('%',#{ddh},'%')
 		</if>
 		order by bdjl.rq desc
 		limit #{rowNum},#{rows}
