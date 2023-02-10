@@ -112,10 +112,33 @@ public class DingDanServiceImpl implements DingDanService {
 	}
 
 	@Override
-	public boolean checkIfExistByZt(Integer yjbfh,Integer ejbfh,String ddztMc, Integer yjzt, Integer ejzt) {
+	public boolean checkIfExistByZt(Integer checkBfh,String checkDdztMc) {
 		// TODO Auto-generated method stub
-		int count=dingDanDao.getCountByZt(yjbfh,ejbfh,ddztMc, yjzt, ejzt);
-		return count==0?false:true;
+		boolean exist=false;
+		String yjsbDdztMc=null;
+		String ejsbDdztMc=null;
+		if(DingDanZhuangTai.CHECK_SHANG_BANG_TEXT.equals(checkDdztMc)) {
+			yjsbDdztMc=DingDanZhuangTai.YI_JIAN_SHANG_BANG_TEXT;
+			ejsbDdztMc=DingDanZhuangTai.ER_JIAN_SHANG_BANG_TEXT;
+		}
+		DingDan dd=dingDanDao.getCheckByZt(checkBfh,yjsbDdztMc,ejsbDdztMc);
+		if(dd!=null) {
+			String ddztMc = dd.getDdztMc();
+			if(DingDanZhuangTai.YI_JIAN_SHANG_BANG_TEXT.equals(ddztMc)) {
+				Integer yjbfh = dd.getYjbfh();
+				System.out.println("yjbfh==="+yjbfh);
+				if(yjbfh==checkBfh)
+					exist=true;
+			}
+			else if(DingDanZhuangTai.ER_JIAN_SHANG_BANG_TEXT.equals(ddztMc)) {
+				Integer ejbfh = dd.getEjbfh();
+				System.out.println("ejbfh==="+ejbfh);
+				if(ejbfh==checkBfh)
+					exist=true;
+			}
+		}
+		
+		return exist;
 	}
 
 	@Override

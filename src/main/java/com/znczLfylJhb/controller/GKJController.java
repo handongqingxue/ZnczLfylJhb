@@ -304,11 +304,14 @@ public class GKJController {
 
 	@RequestMapping(value="/checkDingDanIfExistByZt")
 	@ResponseBody
-	public Map<String, Object> checkDingDanIfExistByZt(Integer yjbfh,Integer ejbfh,String ddztMc, Integer yjzt, Integer ejzt) {
+	public Map<String, Object> checkDingDanIfExistByZt(Integer checkBfh,String checkDdztMc) {
+		
+		System.out.println("checkBfh==="+checkBfh);
+		System.out.println("checkDdztMc==="+checkDdztMc);
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
-		boolean bool=dingDanService.checkIfExistByZt(yjbfh,ejbfh,ddztMc, yjzt, ejzt);
+		boolean bool=dingDanService.checkIfExistByZt(checkBfh,checkDdztMc);
 		if(bool) {
 			jsonMap.put("status", "ok");
 			jsonMap.put("message", "¶©µ¥ÒÑ´æÔÚ£¡");

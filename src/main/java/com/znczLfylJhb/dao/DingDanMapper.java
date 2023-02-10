@@ -32,7 +32,7 @@ public interface DingDanMapper {
 
 	int getCountByDdh(@Param("ddh") String ddh);
 
-	int getCountByZt(@Param("yjbfh") Integer yjbfh,@Param("ejbfh") Integer ejbfh,@Param("ddztMc") String ddztMc, @Param("yjzt") Integer yjzt, @Param("ejzt") Integer ejzt);
+	DingDan getCheckByZt(@Param("bfh") Integer bfh,@Param("yjDdztMc") String yjDdztMc,@Param("ejDdztMc") String ejDdztMc);
 
 	DingDan getByCphJL(@Param("cph") String cph);
 

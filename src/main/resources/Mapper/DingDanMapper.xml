@@ -199,8 +199,8 @@
 	<select id="getCountByDdh" resultType="java.lang.Integer">
 		select count(*) from ding_dan where ddh=#{ddh}
 	</select>
-	<select id="getCountByZt" resultType="java.lang.Integer">
-		select count(*) from ding_dan dd,ding_dan_zhuang_tai ddzt where dd.ddztId=ddzt.id and dd.yjbfh=#{yjbfh} and dd.ejbfh=#{ejbfh} and ddzt.mc=#{ddztMc} and dd.yjzt=#{yjzt} and dd.ejzt=#{ejzt}
+	<select id="getCheckByZt" resultType="com.znczLfylJhb.entity.DingDan">
+		select dd.*,ddzt.mc ddztMc from ding_dan dd,ding_dan_zhuang_tai ddzt where dd.ddztId=ddzt.id and (dd.yjbfh=#{bfh} or dd.ejbfh=#{bfh}) and (ddzt.mc=#{yjDdztMc} or ddzt.mc=#{ejDdztMc})
 	</select>
 	<select id="getByCphJL" resultType="com.znczLfylJhb.entity.DingDan">
 		select * from ding_dan where id in (select rcjl.ddId from(select ddId from rglr_cph_ji_lu where cph=#{cph} order by lrsj desc LIMIT 0,1)as rcjl)
